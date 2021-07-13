@@ -30,3 +30,6 @@ this is a team project using Angular
 - Postman
 - Bootstrap
 - Google API
+
+added git ignore hibernate xml and some files from angular
+
