@@ -1,4 +1,5 @@
 # JourneyLog
 this is a team project using Angular
-Kenji branch created
+
+added git ignore hibernate xml and some files from angular
 
