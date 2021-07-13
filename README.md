@@ -2,6 +2,8 @@
 
 this is a team project using Angular
 
+added git ignore hibernate xml and some files from angular
+
 ## **User Stories**
 
 - A user will be able to sign up if a new user.
@@ -30,6 +32,3 @@ this is a team project using Angular
 - Postman
 - Bootstrap
 - Google API
-
-added git ignore hibernate xml and some files from angular
-
