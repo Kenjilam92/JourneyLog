@@ -1,4 +1,5 @@
-package src.main.java.services;
+package services;
+import models.*;
 
 public class UserService {
 

@@ -1,4 +1,4 @@
-package src.main.java.services;
+package services;
 
 public class JourneyService {
 

@@ -1,7 +1,6 @@
-package src.main.java.controller;
-
-import src.main.java.services.JourneyService;
-import src.main.java.services.UserService;
+package controllers;
+import models.*;
+import services.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

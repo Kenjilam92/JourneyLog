@@ -1,5 +1,6 @@
-package src.main.java.controller;
-
+package controllers;
+import models.*;
+import org.apache.commons.httpclient.*;
 import src.main.java.services.JourneyService;
 import src.main.java.services.UserService;
 
