@@ -1,17 +1,30 @@
-package src.main.Java.models;
+package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Locations")
 public class Location {
-
+    @Id
+    @SequenceGenerator(name="locationSeq", sequenceName = "hibernate_sequence_location", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "locationSeq")
+    @Column( name="LOCATION_ID")
     private int locationId;
+    @Column( name="STREET_NUMBERS")
     private int streetNumber;
+    @Column( name="STREET_NAME")
     private String streetName;
+    @Column( name="CITY")
     private String city;
+    @Column( name="STATE")
     private String state;
-    private int zipcode;
+    @Column( name="ZIPCODE")
+    // Kenji changed zipcode to String because some zipcode begin with 0. Ex: 00501
+    private String zipcode;
 
-    public Location(int locationId, int streetNumber, String streetName, String city, String state, int zipcode) {
+    // we don't need location id for constructor because hibernate will help us generate one unique id
+    public Location(int streetNumber, String streetName, String city, String state, String zipcode) {
         super();
-        this.locationId = locationId;
         this.streetNumber = streetNumber;
         this.streetName = streetName;
         this.city = city;
@@ -52,14 +65,15 @@ public class Location {
     public void setState(String state) {
         this.state = state;
     }
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
     @Override
+    // Action Needed: Missing one " mark for each value.
     public String toString() {
         return "location ID: " + locationId +
                 ", Street Number: " + streetNumber +
