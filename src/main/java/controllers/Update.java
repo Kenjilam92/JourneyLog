@@ -1,7 +1,7 @@
-package src.main.java.controller;
+package controllers;
 
-import src.main.java.services.JourneyService;
-import src.main.java.services.UserService;
+import models.*;
+import services.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,27 +21,27 @@ public class Update {
 		this.userService = userService;
 	}
 	
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity updateUser(@RequestBody User u) throws URISyntaxException {
+	@PutMapping(path="{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity updateUser(@RequestBody User u, @PathVariable Integer id) {
 		System.out.println("Post Update User");
 		return null;
 		//userService.updateUser(u);
-		//return ResponseEntity.created(new URI("" + u.getId())).build();
+		//return ResponseEntity.noContent().build();
 	}
 	
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity updateLocation(@RequestBody Location l) throws URISyntaxException {
+	@PutMapping(path="{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity updateLocation(@RequestBody Location l, @PathVariable Integer id) {
 		System.out.println("Post Update Location");
 		return null;
 		//userService.updateLocation(l);
-		//return ResponseEntity.created(new URI("" + u.getId())).build();
+		//return ResponseEntity.noContent().build();
 	}
 
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity updateJourney()@RequestBody Journey j) throws URISyntaxException {
+	@PutMapping(path="{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity updateJourney(@RequestBody Journey j, @PathVariable Integer id) {
 		System.out.println("Post Update Journey");
 		return null;
 		//userService.updateJourney(j);
-		//return ResponseEntity.created(new URI("" + u.getId())).build();
+		//return ResponseEntity.noContent().build();
 	}
 }

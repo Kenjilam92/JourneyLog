@@ -1,7 +1,7 @@
-package src.main.java.controller;
+package controllers;
 
-import src.main.java.services.JourneyService;
-import src.main.java.services.UserService;
+import models.*;
+import services.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,27 +20,27 @@ public class Delete {
 		this.userService = userService;
 	}
     
-    @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity deleteUser(@RequestBody User u) throws URISyntaxException {
+    @DeleteMapping("{id}")
+	public ResponseEntity deleteUser(@PathVariable Integer id) {
 		System.out.println("Post Delete User");
 		return null;
 		//userService.removeUser(u);
-		//return ResponseEntity.created(new URI("" + u.getId())).build();
+		//return ResponseEntity.noContent().build();
 	}
     
-    @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity deleteLocation(@RequestBody Location l) throws URISyntaxException {
+    @DeleteMapping("{id}")
+	public ResponseEntity deleteLocation(@PathVariable Integer id) {
 		System.out.println("Post Delete Location");
 		return null;
 		//userService.removeLocation(l);
-		//return ResponseEntity.created(new URI("" + u.getId())).build();
+		//return ResponseEntity.noContent().build();
 	}
 
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity deleteJourney(@RequestBody Journey j) throws URISyntaxException {
+    @DeleteMapping("{id}")
+	public ResponseEntity deleteJourney(@PathVariable Integer id) {
 		System.out.println("Post Delete Journey");
 		return null;
 		//userService.removeJourney(j);
-		//return ResponseEntity.created(new URI("" + u.getId())).build();
+		//return ResponseEntity.noContent().build();
 	}
 }
