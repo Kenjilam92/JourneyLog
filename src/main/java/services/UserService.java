@@ -5,7 +5,7 @@ public class UserService {
     // Implementation
 
     /* Register User */
-    public void register() {
+    public void register(User u) {
 
     }
 
@@ -29,7 +29,7 @@ public class UserService {
     }
 
     /* Add Location */
-    public void addLocation() {
+    public void addLocation(User l) {
 
     }
 
