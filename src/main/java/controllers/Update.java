@@ -9,9 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
-@RequestMapping("users")
+@RequestMapping("update")
 public class Update {
 	private UserService userService;
 	private JourneyService journeyService;
@@ -20,16 +19,16 @@ public class Update {
 	public void UserService(UserService userService) {
 		this.userService = userService;
 	}
-	
-	@PutMapping(path="{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity updateUser(@RequestBody User u, @PathVariable Integer id) {
+
+	@PutMapping(path="users/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<User> updateUser(@RequestBody User u, @PathVariable Integer id) {
 		System.out.println("Post Update User");
 		return null;
 		//userService.updateUser(u);
 		//return ResponseEntity.noContent().build();
 	}
-	
-	@PutMapping(path="{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
+
+	@PutMapping(path="location/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity updateLocation(@RequestBody Location l, @PathVariable Integer id) {
 		System.out.println("Post Update Location");
 		return null;
@@ -37,7 +36,7 @@ public class Update {
 		//return ResponseEntity.noContent().build();
 	}
 
-	@PutMapping(path="{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(path="journey/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity updateJourney(@RequestBody Journey j, @PathVariable Integer id) {
 		System.out.println("Post Update Journey");
 		return null;

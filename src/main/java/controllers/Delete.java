@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("delete")
 public class Delete {
 	private UserService userService;
 	private JourneyService journeyService;
@@ -19,16 +19,16 @@ public class Delete {
 	public void UserService(UserService userService) {
 		this.userService = userService;
 	}
-    
-    @DeleteMapping("{id}")
+
+    @DeleteMapping("users/{id}")
 	public ResponseEntity deleteUser(@PathVariable Integer id) {
 		System.out.println("Post Delete User");
 		return null;
 		//userService.removeUser(u);
 		//return ResponseEntity.noContent().build();
 	}
-    
-    @DeleteMapping("{id}")
+
+    @DeleteMapping("location/{id}")
 	public ResponseEntity deleteLocation(@PathVariable Integer id) {
 		System.out.println("Post Delete Location");
 		return null;
@@ -36,7 +36,7 @@ public class Delete {
 		//return ResponseEntity.noContent().build();
 	}
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("journey/{id}")
 	public ResponseEntity deleteJourney(@PathVariable Integer id) {
 		System.out.println("Post Delete Journey");
 		return null;
