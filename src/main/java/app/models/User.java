@@ -1,5 +1,4 @@
-package models;
-import org.hibernate.annotations.ManyToAny;
+package app.models;
 
 import javax.persistence.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package models;
+package app.models;
 import javax.persistence.*;
 import java.util.*;
 
@@ -20,18 +20,18 @@ public class Journey {
             inverseJoinColumns = @JoinColumn(name="LOCATION_ID", referencedColumnName="LOCATION_ID", columnDefinition = "INT")
     )
     private List<Location> stopPoints;
-
     @Column(name="TIME")
     private int time;
     @Column(name="LENGTH")
     private int length;
 
     //we don't need to add id in the constructor because hibernate will auto generate an unique id
-    public Journey(User creator, int time, int length){
+    public Journey(User creator, int time, int length, List<Location> stopPoints ){
         super();
         this.creator = creator;
         this.time = time;
         this. length = length;
+        this. stopPoints = stopPoints;
     }
 
     public Journey(){

@@ -1,4 +1,5 @@
-package services;
+package app.services;
+import app.models.User;
 import models.*;
 import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
