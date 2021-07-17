@@ -1,5 +1,5 @@
 package controllers;
-
+//import models.*;
 import services.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("show")
 public class Show {
 
         private UserServices userService;
@@ -17,6 +19,7 @@ public class Show {
         public void showAllUser() {
                 System.out.println("All Users");
         }
+
 
         @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
         public void showAllLocation() {
