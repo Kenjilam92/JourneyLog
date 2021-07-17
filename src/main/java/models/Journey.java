@@ -79,6 +79,7 @@ public class Journey {
                 ", \"User creator\" : " + creator.toString() + ""+
                 ", \"Travel time\" : " + time +
                 ", \"Distance\" : " + length +
+                ", \"StopPoints\" : [" + "]" +
                 '}';
     }
 

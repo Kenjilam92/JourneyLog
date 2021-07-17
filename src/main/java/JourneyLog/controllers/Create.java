@@ -1,4 +1,4 @@
-package controllers;
+package JourneyLog.controllers;
 import services.*;
 import models.*;
 
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URISyntaxException;
 
-@RestController
-@RequestMapping("create")
+//@RestController
+//@RequestMapping("create")
 public class Create {
 
-    @Autowired
-    public void UserService(UserService userService) {
-        this.userService = userService;
-    }
+//    @Autowired
+//    public void UserService() {
+//
+//    }
 
 
     @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)

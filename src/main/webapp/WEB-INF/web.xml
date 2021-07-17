@@ -18,7 +18,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>application-context.xml</param-value>
+            <param-value>WEB-INF/application-context.xml</param-value>
         </init-param>
         <!-- load on startup to complete context creation before the first request -->
         <load-on-startup>1</load-on-startup>
@@ -33,4 +33,7 @@
         <servlet-name>DispatcherServlet</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 </web-app>
