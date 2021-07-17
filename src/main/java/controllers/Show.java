@@ -1,5 +1,5 @@
 package controllers;
-import models.*;
+
 import services.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 public class Show {
 
-        private UserService userService;
-        private JourneyService journeyService;
+        private UserServices userService;
+        private JourneyServices journeyService;
 
         @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-        public void showAllUser(RequestParam(defaultValue = "false")) {
+        public void showAllUser() {
                 System.out.println("All Users");
         }
 
@@ -42,6 +42,6 @@ public class Show {
         @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
         public void showJourneyById() {
                 System.out.println("Show journey by Id");
-                journeyService.showJourneyById();
+//                journeyService.showJourneyById();
         }
 }

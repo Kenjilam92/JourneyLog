@@ -1,6 +1,6 @@
 package services;
 
-public class JourneyService {
+public class JourneyServices {
 
     // Implementation
 

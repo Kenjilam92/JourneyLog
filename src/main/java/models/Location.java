@@ -75,12 +75,13 @@ public class Location {
     @Override
     // Action Needed: Missing one " mark for each value.
     public String toString() {
-        return "location ID: " + locationId +
-                ", Street Number: " + streetNumber +
-                ", Street Name: " + streetName + '\'' +
-                ", City: " + city + '\'' +
-                ", State: " + state + '\'' +
-                ", Zipcode: " + zipcode +
+        return "{" +
+                "  \"location ID\" : " + locationId +
+                ", \"Street Number\" : \"" + streetNumber + "\"" +
+                ", \"Street Name\" : \"" + streetName + '\"' +
+                ", \"City\" : \"" + city + '\"' +
+                ", \"State\" : \"" + state + '\"' +
+                ", \"Zipcode\" : \"" + zipcode + "\"" +
                 '}';
     }
 

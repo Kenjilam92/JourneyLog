@@ -38,7 +38,6 @@ public class User {
     //We also don't need user id because hibernate will auto generate a unique id for us
     public User(String firstName, String lastName, String email, String password){
         super();
-        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -82,15 +81,15 @@ public class User {
     }
 
     @Override
-    // Action Needed: Missing one " mark for each value.
     public String toString() {
-        return "User ID: " + userId +
-                ", First Name: " + firstName + '\'' +
-                ", Last Name: " + lastName + '\'' +
-                ", Email: " + email + '\'' +
-                ", PW: " + password + '\'' +
-                ", Address Book: " + addressBook +
-                '}';
+        return  "{" +
+                "  \"User ID\" : " + userId +
+                ", \"First Name\" : \"" + firstName + '\"' +
+                ", \"Last Name\" : \"" + lastName + '\"' +
+                ", \"Email\" : \"" + email + '\"' +
+                ", \"PW\" : \"" + password + '\"' +
+                ", \"Address Book\" : [" + "]" +
+                "}";
     }
 
 }

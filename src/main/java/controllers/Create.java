@@ -1,8 +1,7 @@
 package controllers;
+
+import services.*;
 import models.*;
-import org.apache.commons.httpclient.*;
-import src.main.java.services.JourneyService;
-import src.main.java.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,19 +9,20 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("users")
 public class Create {
-    private UserService userService;
-    private JourneyService journeyService;
+    private UserServices userServices;
+    private JourneyServices journeyServics;
 
-    @Autowired
-    public void UserService(UserService userService) {
-        this.userService = userService;
-    }
+//    @Autowired
+//    public void UserService(UserService userService) {
+//        this.userService = userService;
+//    }
 
     @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity register(@RequestBody User u) throws URISyntaxException {
+    public ResponseEntity register(@RequestBody User u) {
         System.out.println("Post register user");
         return null;
 //        UserService.register(u);
@@ -30,7 +30,7 @@ public class Create {
     }
 
     @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addLocation(@RequestBody User l) throws URISyntaxException {
+    public ResponseEntity addLocation(@RequestBody User l)  {
         System.out.println("Post add location");
         return null;
 //        UserService.addLocation(l);
@@ -38,7 +38,7 @@ public class Create {
     }
 
     @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addJourney(@RequestBody Journey j) throws URISyntaxException {
+    public ResponseEntity addJourney(@RequestBody Journey j) {
         System.out.println("Post add journey");
         return null;
 //        JourneyService.addJourney(j);

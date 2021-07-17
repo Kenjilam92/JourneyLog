@@ -3,7 +3,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Table(name="Journeys")
+@Table(name="JOURNEYS")
 public class Journey {
     @Id
     @SequenceGenerator( name = "journeySeq", sequenceName = "hibernate_sequence_journey", allocationSize = 1)
@@ -13,6 +13,14 @@ public class Journey {
     @ManyToOne ( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn ( name = "CREATOR_ID", referencedColumnName = "USER_ID", columnDefinition = "INT")
     private User creator;
+
+    @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable( name="JOURNEY_LOCATION",
+            joinColumns = @JoinColumn(name="JOURNEY_ID", referencedColumnName =  "JOURNEY_ID", columnDefinition = "INT"),
+            inverseJoinColumns = @JoinColumn(name="LOCATION_ID", referencedColumnName="LOCATION_ID", columnDefinition = "INT")
+    )
+    private List<Location> stopPoints;
+
     @Column(name="TIME")
     private int time;
     @Column(name="LENGTH")
@@ -55,13 +63,22 @@ public class Journey {
         this.length = length;
     }
 
+    public void setStopPoints( List<Location> stopPoints ){
+        this.stopPoints = stopPoints;
+    }
+
+    public List<Location> getStopPoints(){
+        return this.stopPoints;
+    }
+
     @Override
     // Action Needed: Missing one " mark for each value.
     public String toString() {
-        return "Journey ID: " + journeyId +
-                ", User creator: " + creator +
-                ", Travel time: " + time +
-                ", Distance: " + length +
+        return "{" +
+                " \"Journey ID\" : \"" + journeyId + "\""+
+                ", \"User creator\" : " + creator.toString() + ""+
+                ", \"Travel time\" : " + time +
+                ", \"Distance\" : " + length +
                 '}';
     }
 
