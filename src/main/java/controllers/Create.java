@@ -13,25 +13,25 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URISyntaxException;
 
 @RestController
-@RequestMapping("create")
+@RequestMapping("/create")
 public class Create {
-    private UserService userService;
-    private JourneyService journeyService;
 
-    @Autowired
-    public void UserService(UserService userService) {
-        this.userService = userService;
-    }
-
-//    @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity register(@RequestBody User u) throws URISyntaxException {
-//        System.out.println("Post register user");
-//        return null;
-////        UserService.register(u);
-////        return ResponseEntity.created(new URI("" + u.getId())).build();
+//    @Autowired
+//    public void UserService(UserService userService) {
+//        this.userService = userService;
 //    }
+
+    // Register User
+    @PostMapping(path="users", consumes=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity register(@RequestBody User u) throws URISyntaxException {
+        System.out.println("Post register user");
+        return null;
+//        UserService.register(u);
+//        return ResponseEntity.created(new URI("" + u.getId())).build();
+    }
 //
-//    @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+//    // Add New Location
+//    @PostMapping(path="locations", consumes=MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity addLocation(@RequestBody User l) throws URISyntaxException {
 //        System.out.println("Post add location");
 //        return null;
@@ -39,7 +39,8 @@ public class Create {
 ////        return ResponseEntity.created(new URI("" + l.getId())).build();
 //    }
 //
-//    @PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+//    // Add New Journey
+//    @PostMapping(path="journeys", consumes=MediaType.APPLICATION_JSON_VALUE)
 //    public ResponseEntity addJourney(@RequestBody Journey j) throws URISyntaxException {
 //        System.out.println("Post add journey");
 //        return null;

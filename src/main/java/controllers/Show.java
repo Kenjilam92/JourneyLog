@@ -1,50 +1,64 @@
 package controllers;
 
 //import models.*;
+import services.JourneyService;
+import services.UserService;
 import services.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("show")
+@RequestMapping("/show")
 public class Show {
 
         private UserService userService;
         private JourneyService journeyService;
 
-        @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-        public void showAllUser() {
+        // Show All Users
+        @GetMapping(path="/users", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+        public ResponseEntity showAllUser() {
                 System.out.println("All Users");
+                return ResponseEntity.notFound().build();
         }
 
-//        @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//        public void showAllLocation() {
+//        // Show User by Id
+//        @GetMapping(path="users/{id}",produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
+//        public ResponseEntity showUserById(@PathVariable Integer id) {
+//
+//                System.out.println(id);
+//                return ResponseEntity.notFound().build();
+//        }
+//
+//        // Show All Locations
+//        @GetMapping(path="locations", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+//        public ResponseEntity showAllLocation() {
 //                System.out.println("All Locations");
+//                return ResponseEntity.notFound().build();
 //        }
 //
-//        @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//        public void showAllJourney() {
+//        // Show Location by Id
+//        @GetMapping(path="locations/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+//        public ResponseEntity showLocationById(@PathVariable Integer id) {
+//
+//                System.out.println(id);
+//                return ResponseEntity.notFound().build();
+//        }
+//
+//        // Show All Journeys
+//        @GetMapping(path="journeys", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+//        public ResponseEntity showAllJourney() {
+//
 //                System.out.println("All Journeys");
+//                return ResponseEntity.notFound().build();
 //        }
 //
-//        @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//        public void showUserById() {
-//                userService.showUserById();
-//        }
+//        // Show Journey by Id
+//        @GetMapping(path="journeys/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+//        public ResponseEntity showJourneyById(@PathVariable Integer id) {
 //
-//        @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//        public void showLocationById() {
-//                System.out.println("Show location by Id");
-////                userService.showLocationById();
-//        }
-//
-//        @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//        public void showJourneyById() {
-//                System.out.println("Show journey by Id");
-////                journeyService.showJourneyById();
+//                System.out.println(id);
+//                return ResponseEntity.notFound().build();
 //        }
 }
