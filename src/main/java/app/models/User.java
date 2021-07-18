@@ -33,6 +33,14 @@ public class User {
     )
     //this should be in list because address book have more than one location
     private List<Location> addressBook;
+
+
+    @OneToMany( mappedBy = "creator")
+    private List<Journey> journeysLog;
+
+
+
+
     //We don't need to initiate address book when create a new user because User can have empty address book
     //We also don't need user id because hibernate will auto generate a unique id for us
     public User(String firstName, String lastName, String email, String password){
@@ -42,6 +50,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.addressBook = new ArrayList<Location>();
+        this.journeysLog = new ArrayList<Journey>();
     }
 
     public User(){
@@ -79,6 +88,12 @@ public class User {
         this.password = password;
     }
 
+    public List<Location> getAddressBook(){
+        return addressBook;
+    }
+    public List<Journey> getJourneysLog(){
+        return journeysLog;
+    }
     @Override
     public String toString() {
         return  "{" +
@@ -87,7 +102,6 @@ public class User {
                 ", \"Last Name\" : \"" + lastName + '\"' +
                 ", \"Email\" : \"" + email + '\"' +
                 ", \"PW\" : \"" + password + '\"' +
-                ", \"Address Book\" : [" + "]" +
                 "}";
     }
 

@@ -1,61 +1,63 @@
 package app.services;
-import app.DAO.*;
+
+import app.DAO.LocationServicesDAO;
 import app.models.*;
 
-import org.hibernate.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-public class JourneyServices implements JourneyServicesDAO {
+public class LocationServices implements LocationServicesDAO {
 
     private SessionFactory sessionFactory;
-    private static JourneyServices instance = new JourneyServices();
+    private static LocationServices instance = new LocationServices();
 
-    private JourneyServices(){
+    private LocationServices(){
         super();
         final Configuration config = new Configuration().configure();
         final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(config.getProperties());
         sessionFactory = config.buildSessionFactory(builder.build());
     };
 
-    public static JourneyServices getServices(){
+    public static LocationServices getServices(){
         return instance;
     }
 
 
-
-    public List<Journey> getAllJourneys() {
-        List<Journey> journeys = null;
+    public List<Location> getAllLocations() {
+        List<Location> locations = null;
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
-            journeys = session.createCriteria(Journey.class).list();
+            locations = session.createCriteria(Location.class).list();
             tx.commit();
             session.close();
         }catch (Exception e){
             e.printStackTrace();
         }
-        return journeys;
+        return locations;
     }
 
-    public Journey getJourneyById(int x) {
-        Journey journey = null;
+    public Location getLocationById(int x) {
+        Location location = null;
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
-            journey = (Journey) session.get(Journey.class, x);
+            location = (Location) session.get(Location.class, x);
             tx.commit();
             session.close();
         }
         catch (Exception e){
             e.printStackTrace();
         }
-        return journey;
+        return location;
     }
 
-    public boolean createJourney(Journey x) {
+    public boolean createLocation(Location x) {
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
@@ -70,7 +72,7 @@ public class JourneyServices implements JourneyServicesDAO {
         return true;
     }
 
-    public boolean deleteJourney(Journey x) {
+    public boolean deleteLocation(Location x) {
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
@@ -85,7 +87,7 @@ public class JourneyServices implements JourneyServicesDAO {
         return true;
     }
 
-    public boolean updateJourney(Journey x) {
+    public boolean updateLocation(Location x) {
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
@@ -99,6 +101,4 @@ public class JourneyServices implements JourneyServicesDAO {
         }
         return true;
     }
-
-
 }

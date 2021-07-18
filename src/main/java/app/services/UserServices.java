@@ -1,14 +1,18 @@
 package app.services;
-import app.models.User;
-import models.*;
+import app.DAO.*;
+import app.models.*;
+
 import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class UserServices {
+import java.util.List;
+
+public class UserServices implements UserServicesDAO {
 
     private SessionFactory sessionFactory;
     private static UserServices instance = new UserServices();
+    private JourneyServices jourServ = JourneyServices.getServices();
 
     private UserServices(){
         super();
@@ -21,45 +25,93 @@ public class UserServices {
         return instance;
     }
 
-    // Implementation
 
+    public List<User> getAllUser() {
+        List<User> users = null;
+        try{
+            Session session = sessionFactory.openSession();
+            Transaction tx = session.beginTransaction();
+            users = session.createCriteria(User.class).list();
+            tx.commit();
+            session.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return users;
+    }
 
-    /* Register User */
-    public void register(String eM, String pw, String fN, String lN) {
-        User newUser = new User(fN,lN,eM,pw);
+    public User getUserById( int x ) {
+        User user = null;
+        try{
+            Session session = sessionFactory.openSession();
+            Transaction tx = session.beginTransaction();
+            user = (User) session.get(User.class, x);
+            tx.commit();
+            session.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    public User getUserByEmailAndPassword(String email, String password) {
+        User user = null;
         Session session = sessionFactory.openSession();
-        Transaction tx = session.beginTransaction();
-        session.save(newUser);
-        tx.commit();
-        session.close();
+        Query query = session.createQuery("from USERS_APP where email=:email and password= :password");
+        query.setParameter("email", email);
+        query.setParameter("password",password);
+        user = (User) query.uniqueResult();
+
+        return user;
     }
 
-    /* Login User */
-    public void login() {
-
+    public boolean createUser(User x) {
+        try{
+            Session session = sessionFactory.openSession();
+            Transaction tx = session.beginTransaction();
+            session.save(x);
+            tx.commit();
+            session.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
-    /* Show User by ID */
-    public void showUserById() {
+    public boolean deleteUser(User x) {
+        try{
+            Session session = sessionFactory.openSession();
+            Transaction tx = session.beginTransaction();
+            List<Journey> JourneyLog = x.getJourneysLog();
+            for ( Journey j: JourneyLog){ jourServ.deleteJourney(j); }
 
+            session.delete(x);
+
+            tx.commit();
+            session.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
-    /* Update User */
-    public void updateUser() {
-        // Update Name
-
-        // Change Password
-
-        // Change Email
-    }
-
-    /* Add Location */
-    public void addLocation(User l) {
-
-    }
-
-    /* Remove Location */
-    public void removeLocation() {
-
+    public boolean updateUser(User x) {
+        try{
+            Session session = sessionFactory.openSession();
+            Transaction tx = session.beginTransaction();
+            session.update(x);
+            tx.commit();
+            session.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
