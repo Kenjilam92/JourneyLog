@@ -74,14 +74,14 @@ public class Location {
 
     @Override
     // Action Needed: Missing one " mark for each value.
+    // toJson
     public String toString() {
-        return "location ID: " + locationId +
-                ", Street Number: " + streetNumber +
-                ", Street Name: " + streetName + '\'' +
-                ", City: " + city + '\'' +
-                ", State: " + state + '\'' +
-                ", Zipcode: " + zipcode +
-                '}';
+        return "{\n\"Location ID\": " + locationId +
+                ",\n\"Street Number\": " + streetNumber +
+                ",\n\"Street Name\": " + "\"" + streetName + "\"" +
+                ",\n\"City\": " + "\"" + city + "\"" +
+                ",\n\"State\": " + "\"" + state + "\"" +
+                ",\n\"Zipcode\": " + "\"" + zipcode + "\"\n}";
     }
 
 }
