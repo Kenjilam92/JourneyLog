@@ -1,9 +1,6 @@
 package app.controllers;
-import models.*;
 
 import app.services.JourneyServices;
-import app.services.UserServices;
-import services.*;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/show")
 public class Show {
 
-        private UserServices userService;
+//        private UserServices userService;
         private JourneyServices journeyService;
 
         // Show All Users

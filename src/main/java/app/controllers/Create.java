@@ -1,7 +1,7 @@
 package app.controllers;
 import app.models.Journey;
 import app.models.User;
-import models.*;
+
 
 
 import org.springframework.http.MediaType;

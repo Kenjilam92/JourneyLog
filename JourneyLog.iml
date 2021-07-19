@@ -5,19 +5,13 @@
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-<<<<<<< HEAD
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-=======
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
->>>>>>> 2899f8c (reset)
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< HEAD
-=======
     <orderEntry type="library" name="Maven: com.oracle.database.jdbc:ojdbc8:19.7.0.0" level="project" />
->>>>>>> 2899f8c (reset)
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:4.3.11.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.1.3.GA" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging-annotations:1.2.0.Beta1" level="project" />

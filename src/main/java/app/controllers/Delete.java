@@ -1,9 +1,7 @@
 package app.controllers;
 
 import app.services.JourneyServices;
-import app.services.UserServices;
-import models.*;
-import services.*;
+
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 //@RestController
 //@RequestMapping("delete")
 public class Delete {
-	private UserServices userService;
+//	private UserServices userService;
 	private JourneyServices journeyService;
 	
 //	@Autowired
