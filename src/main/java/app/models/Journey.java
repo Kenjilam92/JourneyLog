@@ -73,14 +73,12 @@ public class Journey {
 
     @Override
     // Action Needed: Missing one " mark for each value.
+    // toJson
     public String toString() {
-        return "{" +
-                " \"Journey ID\" : \"" + journeyId + "\""+
-                ", \"User creator\" : " + creator.toString() + ""+
-                ", \"Travel time\" : " + time +
-                ", \"Distance\" : " + length +
-                ", \"StopPoints\" : [" + "]" +
-                '}';
+        return "{\n\"Journey ID\": " + journeyId +
+                ",\n\"User creator\": " + "\"" + creator.toString() + "\"" +
+                ",\n\"Travel time\": " + time +
+                ",\n\"Distance\": " + length + "\n}";
     }
 
 }

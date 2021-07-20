@@ -95,14 +95,14 @@ public class User {
         return journeysLog;
     }
     @Override
+
     public String toString() {
-       return  "{" +
-                "  \"User ID\" : " + userId +
-                ", \"First Name\" : \"" + firstName + '\"' +
-                ", \"Last Name\" : \"" + lastName + '\"' +
-                ", \"Email\" : \"" + email + '\"' +
-                ", \"PW\" : \"" + password + '\"' +
-                "}";
+        return "{\n\"User ID\": " + userId +
+                ",\n\"First Name\": " + "\"" + firstName + "\"" +
+                ",\n\"Last Name\": " + "\"" + lastName + "\"" +
+                ",\n\"Email\": " + "\"" + email + "\"" +
+                ",\n\"PW\": " + "\"" + password + "\"" +
+                "\n}";
     }
 
 }
