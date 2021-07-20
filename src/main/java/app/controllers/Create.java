@@ -1,47 +1,49 @@
 package app.controllers;
 import app.models.Journey;
+import app.models.Location;
 import app.models.User;
 
 
-
+import app.services.JourneyServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URISyntaxException;
 
-//@RestController
-//@RequestMapping("create")
+@RestController
+@RequestMapping("create")
 public class Create {
 
-//    @Autowired
-//    public void UserService() {
-//
-//    }
+    @Autowired
+    public void UserService() {
+
+    }
 
 
     @PostMapping(path="users", consumes=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity register(@RequestBody User u) throws URISyntaxException {
+    public boolean createUser(@RequestBody User x) throws URISyntaxException {
         System.out.println("Post register user");
-        return null;
-//        UserService.register(u);
+        return true;
+//        UserServices.createUser(x);
 //        return ResponseEntity.created(new URI("" + u.getId())).build();
     }
 
     @PostMapping(path="locations", consumes=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addLocation(@RequestBody User l) throws URISyntaxException {
+    public boolean createLocation(@RequestBody Location x) throws URISyntaxException {
         System.out.println("Post add location");
-        return null;
-//        UserService.addLocation(l);
+        return true;
+//        UserServices.createLocation(x);
 //        return ResponseEntity.created(new URI("" + l.getId())).build();
     }
 
     @PostMapping(path="journeys", consumes=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addJourney(@RequestBody Journey j) throws URISyntaxException {
+    public boolean createJourney(@RequestBody Journey x) throws URISyntaxException {
         System.out.println("Post add journey");
-        return null;
-//        JourneyService.addJourney(j);
-//        return ResponseEntity.created(new URI("" + j.getId())).build();
+        return true;
+//        JourneyServices.createJourney(x);
+//        return ResponseEntity.created(new URI("" + x.getId())).build();
     }
 
 }

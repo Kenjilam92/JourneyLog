@@ -6,8 +6,8 @@ import app.services.JourneyServices;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-//@RestController
-//@RequestMapping("delete")
+@RestController
+@RequestMapping("delete")
 public class Delete {
 //	private UserServices userService;
 	private JourneyServices journeyService;

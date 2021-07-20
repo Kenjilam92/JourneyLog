@@ -4,7 +4,7 @@ import app.models.*;
 import java.util.*;
 
 public class TestCRUD {
-    public UserServices uServ = UserServices.getServices();
+//    public UserServices uServ = UserServices.getServices();
     public LocationServices locServ = LocationServices.getServices();
     public JourneyServices jourServ = JourneyServices.getServices();
 
