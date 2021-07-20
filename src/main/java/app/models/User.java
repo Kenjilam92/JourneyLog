@@ -1,12 +1,16 @@
 package app.models;
 
+import org.hibernate.SessionFactory;
+
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
 @Table(name="USERS_APP")
 public class User {
+    private static SessionFactory sessionFactory;
     // 7/15 - 8pm: added hibernate annotate
     //Id key to identify primary key
     @Id
@@ -56,6 +60,7 @@ public class User {
     public User(){
         //constructor stub
     }
+
 
     public int getUserId(){
         return userId;

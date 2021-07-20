@@ -1,6 +1,8 @@
 package app.DAO;
-import app.models.*;
-import java.util.*;
+
+import app.models.Location;
+
+import java.util.List;
 
 public interface LocationServicesDAO {
     public List<Location> getAllLocations();

@@ -26,7 +26,7 @@ public class UserServices implements UserServicesDAO {
     }
 
 
-    public List<User> getAllUser() {
+    public List<User> getAllUsers() {
         List<User> users = null;
         try{
             Session session = sessionFactory.openSession();

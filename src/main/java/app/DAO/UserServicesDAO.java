@@ -1,6 +1,8 @@
 package app.DAO;
-import app.models.*;
-import java.util.*;
+
+import app.models.User;
+
+import java.util.List;
 
 public interface UserServicesDAO {
     public List<User> getAllUsers();

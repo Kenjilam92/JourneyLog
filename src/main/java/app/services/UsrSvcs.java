@@ -1,63 +1,72 @@
 package app.services;
+import app.DAO.*;
+import app.models.*;
 
-import app.DAO.JourneyServicesDAO;
-import app.models.Journey;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-public class JourneyServices implements JourneyServicesDAO {
+public class UsrSvcs implements UserServicesDAO {
 
     private SessionFactory sessionFactory;
-    private static JourneyServices instance = new JourneyServices();
+    private static UsrSvcs instance = new UsrSvcs();
+    private JourneyServices jourServ = JourneyServices.getServices();
 
-    private JourneyServices(){
+    private UsrSvcs(){
         super();
         final Configuration config = new Configuration().configure();
         final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(config.getProperties());
         sessionFactory = config.buildSessionFactory(builder.build());
     };
 
-    public static JourneyServices getServices(){
+    public static UsrSvcs getServices(){
         return instance;
     }
 
 
-
-    public List<Journey> getAllJourneys() {
-        List<Journey> journeys = null;
+    public List<User> getAllUsers() {
+        List<User> users = null;
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
-            journeys = session.createCriteria(Journey.class).list();
+            users = session.createCriteria(User.class).list();
             tx.commit();
             session.close();
         }catch (Exception e){
             e.printStackTrace();
         }
-        return journeys;
+        return users;
     }
 
-    public Journey getJourneyById(int x) {
-        Journey journey = null;
+    public User getUserById( int x ) {
+        User user = null;
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
-            journey = (Journey) session.get(Journey.class, x);
+            user = (User) session.get(User.class, x);
             tx.commit();
             session.close();
         }
         catch (Exception e){
             e.printStackTrace();
         }
-        return journey;
+        return user;
     }
 
-    public boolean createJourney(Journey x) {
+    public User getUserByEmailAndPassword(String email, String password) {
+        User user = null;
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("from USERS_APP where email=:email and password= :password");
+        query.setParameter("email", email);
+        query.setParameter("password",password);
+        user = (User) query.uniqueResult();
+
+        return user;
+    }
+
+    public boolean createUser(User x) {
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
@@ -72,11 +81,15 @@ public class JourneyServices implements JourneyServicesDAO {
         return true;
     }
 
-    public boolean deleteJourney(Journey x) {
+    public boolean deleteUser(User x) {
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
+            List<Journey> JourneyLog = x.getJourneysLog();
+            for ( Journey j: JourneyLog){ jourServ.deleteJourney(j); }
+
             session.delete(x);
+
             tx.commit();
             session.close();
         }
@@ -87,7 +100,7 @@ public class JourneyServices implements JourneyServicesDAO {
         return true;
     }
 
-    public boolean updateJourney(Journey x) {
+    public boolean updateUser(User x) {
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
@@ -101,6 +114,5 @@ public class JourneyServices implements JourneyServicesDAO {
         }
         return true;
     }
-
-
 }
+

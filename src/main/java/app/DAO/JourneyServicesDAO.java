@@ -1,6 +1,8 @@
 package app.DAO;
-import app.models.*;
-import java.util.*;
+
+import app.models.Journey;
+
+import java.util.List;
 
 public interface JourneyServicesDAO {
     public List<Journey> getAllJourneys ();

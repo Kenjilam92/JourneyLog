@@ -1,7 +1,10 @@
-import app.services.*;
-import app.models.*;
+import app.models.Location;
+import app.models.User;
+import app.services.JourneyServices;
+import app.services.LocationServices;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestCRUD {
 //    public UserServices uServ = UserServices.getServices();
