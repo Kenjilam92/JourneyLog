@@ -2,6 +2,7 @@ package app.controllers;
 import app.models.Journey;
 import app.models.Location;
 import app.models.User;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

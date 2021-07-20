@@ -1,18 +1,12 @@
 package app.controllers;
+import app.models.*;
+import app.services.*;
 
-import app.models.Journey;
-import app.models.Location;
-import app.models.User;
-import app.services.JourneyServices;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-//@RestController
-//@RequestMapping("update")
+@RestController
+@RequestMapping("update")
 public class Update {
 //	private UserServices userService;
 	private JourneyServices journeyService;
@@ -22,12 +16,14 @@ public class Update {
 //		this.userService = userService;
 //	}
 
-	@PutMapping(path="users/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> updateUser(@RequestBody User u, @PathVariable Integer id) {
+	@PutMapping(path="users", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<String> updateUser() {
 		System.out.println("Post Update User");
-		return null;
-		//userService.updateUser(u);
-		//return ResponseEntity.noContent().build();
+		//if(userService.updateUser(new User()))
+			return new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"success\" }", HttpStatus.OK);
+		//else
+		//	return null;
 	}
 
 	@PutMapping(path="location/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
@@ -45,4 +41,5 @@ public class Update {
 		//userService.updateJourney(j);
 		//return ResponseEntity.noContent().build();
 	}
+
 }
