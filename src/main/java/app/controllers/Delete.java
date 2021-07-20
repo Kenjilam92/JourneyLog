@@ -2,14 +2,14 @@ package app.controllers;
 
 import app.services.JourneyServices;
 import app.services.UserServices;
-import models.*;
-import services.*;
+import app.models.*;
+import app.services.*;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-//@RestController
-//@RequestMapping("delete")
+@RestController
+@RequestMapping("delete")
 public class Delete {
 	private UserServices userService;
 	private JourneyServices journeyService;

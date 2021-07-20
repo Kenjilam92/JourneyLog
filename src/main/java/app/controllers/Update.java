@@ -5,15 +5,18 @@ import app.models.Location;
 import app.models.User;
 import app.services.JourneyServices;
 import app.services.UserServices;
-import models.*;
-import services.*;
+import app.models.*;
+import app.services.*;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-//@RestController
-//@RequestMapping("update")
+import javax.servlet.http.HttpServletRequest;
+
+@RestController
+@RequestMapping("update")
 public class Update {
 	private UserServices userService;
 	private JourneyServices journeyService;
@@ -23,12 +26,14 @@ public class Update {
 //		this.userService = userService;
 //	}
 
-	@PutMapping(path="users/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<User> updateUser(@RequestBody User u, @PathVariable Integer id) {
+	@PutMapping(path="users", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<String> updateUser() {
 		System.out.println("Post Update User");
-		return null;
-		//userService.updateUser(u);
-		//return ResponseEntity.noContent().build();
+		//if(userService.updateUser(new User()))
+			return new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"success\" }", HttpStatus.OK);
+		//else
+		//	return null;
 	}
 
 	@PutMapping(path="location/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
