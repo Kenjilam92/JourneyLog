@@ -2,6 +2,7 @@ package app.DAO;
 import app.models.*;
 import java.util.*;
 
+
 public interface LocationServicesDAO {
     public List<Location> getAllLocations();
     public Location getLocationById(int x);

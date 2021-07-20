@@ -1,7 +1,8 @@
 package app.models;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -57,6 +58,7 @@ public class User {
         //constructor stub
     }
 
+
     public int getUserId(){
         return userId;
     }
@@ -95,7 +97,6 @@ public class User {
         return journeysLog;
     }
     @Override
-
     public String toString() {
         return "{\n\"User ID\": " + userId +
                 ",\n\"First Name\": " + "\"" + firstName + "\"" +

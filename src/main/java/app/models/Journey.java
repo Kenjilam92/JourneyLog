@@ -1,6 +1,6 @@
 package app.models;
 import javax.persistence.*;
-import java.util.*;
+import java.util.List;
 
 @Entity
 @Table(name="JOURNEYS")

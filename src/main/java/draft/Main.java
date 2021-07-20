@@ -8,8 +8,5 @@ public class Main {
         String password = "1234";
         String firstName = "Ken";
         String lastName ="Lam";
-
-
-
     }
 }

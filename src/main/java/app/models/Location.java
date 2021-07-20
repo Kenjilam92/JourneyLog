@@ -82,6 +82,7 @@ public class Location {
                 ",\n\"City\": " + "\"" + city + "\"" +
                 ",\n\"State\": " + "\"" + state + "\"" +
                 ",\n\"Zipcode\": " + "\"" + zipcode + "\"\n}";
+
     }
 
 }

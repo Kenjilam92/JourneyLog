@@ -2,6 +2,7 @@ package app.DAO;
 import app.models.*;
 import java.util.*;
 
+
 public interface JourneyServicesDAO {
     public List<Journey> getAllJourneys ();
     public Journey getJourneyById ( int x);
