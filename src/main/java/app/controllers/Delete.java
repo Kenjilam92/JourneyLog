@@ -3,11 +3,12 @@ package app.controllers;
 import app.models.*;
 import app.services.*;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("delete")
@@ -20,27 +21,40 @@ public class Delete {
 //		this.userService = userService;
 //	}
 
-    @DeleteMapping("users/{id}")
-	public ResponseEntity deleteUser(@PathVariable Integer id) {
+    @DeleteMapping(path="users/{id}", consumes= MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity deleteUser(@PathVariable Integer id, @RequestBody Map<String, Object> userData) {
 		System.out.println("Post Delete User");
-		return null;
-		//userService.removeUser(u);
-		//return ResponseEntity.noContent().build();
+		System.out.println("User ID: " + userData.get("userId"));
+		System.out.println("Password: " + userData.get("password"));
+
+		/*if(userService.deleteUser(userService.getUserById(userData.get("userId")))) {
+			return new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"success\" }", HttpStatus.OK);
+		}*/
+
+		return new ResponseEntity<>("{ \"connected\" : false, \"status\" : \"failure\" }", HttpStatus.OK);
 	}
 
-    @DeleteMapping("location/{id}")
-	public ResponseEntity deleteLocation(@PathVariable Integer id) {
+    @DeleteMapping(path="location/{id}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity deleteLocation(@PathVariable Integer id, @RequestBody Map<String, Object> locationData) {
 		System.out.println("Post Delete Location");
-		return null;
-		//userService.removeLocation(l);
-		//return ResponseEntity.noContent().build();
+		System.out.println("Location ID: " + locationData.get("locationId"));
+
+		/*if(locationService.deleteLocation(locationService.getLocationById(locationData.get("locationId")))) {
+			return new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"success\" }", HttpStatus.OK);
+		}*/
+
+		return new ResponseEntity<>("{ \"connected\" : false, \"status\" : \"failure\" }", HttpStatus.OK);
 	}
 
-    @DeleteMapping("journey/{id}")
-	public ResponseEntity deleteJourney(@PathVariable Integer id) {
+    @DeleteMapping(path="journey/{id}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity deleteJourney(@PathVariable Integer id, @RequestBody Map<String, Object> journeyData) {
 		System.out.println("Post Delete Journey");
-		return null;
-		//userService.removeJourney(j);
-		//return ResponseEntity.noContent().build();
+		System.out.println("Journey ID: " + journeyData.get("journeyId"));
+
+		/*if(journeyService.deleteJourney(journeyService.getJourneyById(journeyData.get("journeyId")))) {
+			return new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"success\" }", HttpStatus.OK);
+		}*/
+
+		return new ResponseEntity<>("{ \"connected\" : false, \"status\" : \"failure\" }", HttpStatus.OK);
 	}
 }
