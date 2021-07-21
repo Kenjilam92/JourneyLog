@@ -2,6 +2,7 @@ package app.services;
 
 import app.DAO.LocationServicesDAO;
 import app.models.*;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -56,7 +57,29 @@ public class LocationServices implements LocationServicesDAO {
         return location;
     }
 
+    public Location checkExist(Location x) {
+        Location lo = null;
+        Session session = sessionFactory.openSession();
+        String queryString = "from LOCATIONS " +
+                             "where street_numbers=:streetNumber and" +
+                             " street_name=:streetName and" +
+                             " city=:city and" +
+                             " state=:state and" +
+                             " zipcode=:zipcode";
+        Query query = session.createQuery( queryString );
+        query.setParameter("streetNumber", x.getStreetNumber() );
+        query.setParameter("streetName", x.getStreetName() );
+        query.setParameter("city", x.getCity() );
+        query.setParameter("state", x.getState() );
+        query.setParameter("zipcode", x.getZipcode() );
+        lo = (Location) query.uniqueResult();
+        return lo;
+    }
+
     public boolean createLocation(Location x) {
+        if(checkExist(x) != null) {
+            return false;
+        }
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();

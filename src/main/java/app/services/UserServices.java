@@ -67,6 +67,9 @@ public class UserServices implements UserServicesDAO {
     }
 
     public boolean createUser(User x) {
+        if( getUserByEmailAndPassword( x.getEmail(), x.getPassword()) != null ){
+            return false;
+        }
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
