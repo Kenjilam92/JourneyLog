@@ -6,16 +6,14 @@ import app.models.User;
 import app.services.JourneyServices;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/show")
+@RequestMapping("show")
+
 public class Show {
 
 //      private UserServices userService = UserService.getService();
@@ -26,16 +24,24 @@ public class Show {
         public List<User> getAllUser() {
 
                 System.out.println("All Users");
+
+                // Test JSON print out user with dummy data
                 User u =  new User("Yuna", "Han", "y@y.com", "1234");
+                System.out.println(u);
+
 //                List<User> users = userServices.getAllUser();
                 return (List<User>) ResponseEntity.notFound().build();
         }
 
         // Show User by Id
         @GetMapping(path="users/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-        public ResponseEntity<User> getUserById(@PathVariable int x) {
+        public ResponseEntity<User> getUserById() {
 //                userService.getUserById(userId);
-                System.out.println(x);
+
+                // Test JSON print out user with dummy data
+                User u =  new User("Yuna", "Han", "y@y.com", "1234");
+                System.out.println(u);
+
                 return ResponseEntity.notFound().build();
         }
 
