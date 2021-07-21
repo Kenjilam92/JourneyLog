@@ -1,10 +1,11 @@
 package app.models;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@XmlRootElement
 @Entity
 @Table(name="USERS_APP")
 public class User {

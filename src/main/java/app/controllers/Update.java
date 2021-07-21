@@ -17,8 +17,7 @@ public class Update {
 //	}
 
 	@PutMapping(path="users", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public ResponseEntity<String> updateUser() {
+	public ResponseEntity<String> updateUser(@ResponseBody ) {
 		System.out.println("Post Update User");
 		//if(userService.updateUser(new User()))
 			return new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"success\" }", HttpStatus.OK);

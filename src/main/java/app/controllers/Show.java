@@ -1,6 +1,8 @@
 package app.controllers;
 import app.services.*;
+import app.models.*;
 
+import java.util.*;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +13,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("show")
 public class Show {
 
-        private UserServices userService;
+        private UserServices userService = UserServices.getServices();
         private JourneyServices journeyService;
 
-        @GetMapping(path="users",produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
+        @GetMapping(path="users",produces = {MediaType.APPLICATION_JSON_VALUE})
         public ResponseEntity showAllUser() {
 
                 System.out.println("All Users");
-                return ResponseEntity.notFound().build();
+
+                User u = new User("kenji","lam","kenjilam@123.com","123456");
+                return ResponseEntity.ok(u);
         }
 
         @GetMapping(path="users/{id}",produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
         public ResponseEntity showUserById(@PathVariable Integer id) {
-
+                userService.getUserById( id );
                 System.out.println(id);
                 return ResponseEntity.notFound().build();
         }
