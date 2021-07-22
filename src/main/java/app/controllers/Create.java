@@ -45,6 +45,7 @@ public class Create {
         String state = (String) newLocation.get("state");
         String zipcode = (String) newLocation.get("zipcode");
         Location lo = new Location(streetNumber,streetName,city,state,zipcode);
+        System.out.println( lo );
         if( locationServices.createLocation(lo) ){
             return new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"success\" }", HttpStatus.OK);
         }

@@ -61,6 +61,7 @@ public class UserServices implements UserServicesDAO {
         query.setParameter("em", email);
         query.setParameter("pw",password);
         List result = query.list();
+        session.close();
         return result.size() == 0 ? null : (User) result.stream().findFirst().orElse(null);
     }
 

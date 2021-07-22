@@ -60,7 +60,7 @@ public class LocationServices implements LocationServicesDAO {
     public Location checkExist(Location x) {
         Location lo = null;
         Session session = sessionFactory.openSession();
-        String queryString = "from LOCATIONS " +
+        String queryString = "from Location " +
                              "where street_numbers=:streetNumber and" +
                              " street_name=:streetName and" +
                              " city=:city and" +
