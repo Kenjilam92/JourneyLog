@@ -19,12 +19,10 @@ public class Show {
 
         // Show All Users
         @GetMapping(path="users", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-        public ResponseEntity getAllUser() {
-
-//                System.out.println("All Users");
-
+        public List<User> getAllUser() {
                 List<User> users = userServices.getAllUser();
-                return ResponseEntity.ok(users);
+
+                return users;
         }
 
         // Show User by Id

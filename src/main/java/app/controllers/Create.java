@@ -22,15 +22,18 @@ public class Create {
     @PostMapping(path="users", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createUser(@RequestBody Map<String, String> newUser) throws URISyntaxException {
 
+        System.out.println("this is running");
+
         String email = newUser.get("email");
         String password = newUser.get("password");
         String firstName = newUser.get("firstName");
         String lastName = newUser.get("lastName");
         User register = new User(firstName, lastName, email, password);
+        System.out.println(register);
         if( userServices.createUser(register) ){
-            return new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"success\" }", HttpStatus.OK);
+            return new ResponseEntity("{ \"connected\" : true, \"status\" : \"success\" }", HttpStatus.OK);
         }
-        return new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"failure\" }", HttpStatus.OK);
+        return new ResponseEntity("{ \"connected\" : true, \"status\" : \"failure\" }", HttpStatus.OK);
 
     }
 

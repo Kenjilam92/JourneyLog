@@ -31,7 +31,7 @@ public class UserServices implements UserServicesDAO {
         try{
             Session session = sessionFactory.openSession();
             Transaction tx = session.beginTransaction();
-            users = session.createCriteria(User.class).list();
+            users = session.createCriteria(User.class).setFetchMode("journeyLog",FetchMode.EAGER).setFetchMode("addressBook",FetchMode.EAGER).list();
             tx.commit();
             session.close();
         }catch (Exception e){
@@ -56,14 +56,12 @@ public class UserServices implements UserServicesDAO {
     }
 
     public User getUserByEmailAndPassword(String email, String password) {
-        User user = null;
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery("from USERS_APP where email=:email and password= :password");
-        query.setParameter("email", email);
-        query.setParameter("password",password);
-        user = (User) query.uniqueResult();
-
-        return user;
+        Query query = session.createQuery("FROM User WHERE EMAIL= :em and PASSWORD= :pw");
+        query.setParameter("em", email);
+        query.setParameter("pw",password);
+        List result = query.list();
+        return result.size() == 0 ? null : (User) result.stream().findFirst().orElse(null);
     }
 
     public boolean createUser(User x) {

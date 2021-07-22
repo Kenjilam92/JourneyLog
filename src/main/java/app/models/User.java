@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement
+
 @Entity
 @Table(name="USERS_APP")
 public class User {
@@ -28,7 +28,7 @@ public class User {
     private String password;
 
     //this is ManyToMany annotation which help create a relationship table in SQL
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable( name="User_Location",
             joinColumns = @JoinColumn(name="USER_ID", referencedColumnName =  "USER_ID", columnDefinition = "INT"),
             inverseJoinColumns = @JoinColumn(name="LOCATION_ID", referencedColumnName="LOCATION_ID", columnDefinition = "INT")
@@ -99,12 +99,29 @@ public class User {
     }
     @Override
     public String toString() {
-        return "{\n\"User ID\": " + userId +
-                ",\n\"First Name\": " + "\"" + firstName + "\"" +
-                ",\n\"Last Name\": " + "\"" + lastName + "\"" +
-                ",\n\"Email\": " + "\"" + email + "\"" +
-                ",\n\"PW\": " + "\"" + password + "\"" +
+        return "{\n\"userId\": " + userId +
+                ",\n\"firstName\": " + "\"" + firstName + "\"" +
+                ",\n\"lastName\": " + "\"" + lastName + "\"" +
+                ",\n\"email\": " + "\"" + email + "\"" +
+                ",\n\"password\": " + "\"" + password + "\"" +
                 "\n}";
     }
+    public String toJsonDetails() {
+        StringBuilder json = new StringBuilder();
+        json.append("{");
+        json.append("\"profile\" : " + this.toString() +", ");
 
+        json.append("\"addressBook\" : [" );
+        addressBook.stream().forEach( l -> json.append( l.toString() + "," ) );
+        if(addressBook.size()>0) json.setLength(json.length()-1);
+        json.append("],");
+
+        json.append("\"journeyLog\" : [");
+        journeysLog.stream().forEach(j -> json.append( j.toString() + ",") );
+        if(journeysLog.size() > 0) json.setLength(json.length()-1);
+        json.append("]");
+
+        json.append("}");
+        return json.toString();
+    }
 }
