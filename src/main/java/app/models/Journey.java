@@ -75,8 +75,15 @@ public class Journey {
     // Action Needed: Missing one " mark for each value.
     // toJson
     public String toString() {
+        StringBuffer addressJson = new StringBuffer();
+        addressJson.append("[");
+        stopPoints.stream().forEach(a-> addressJson.append(a.toString()));
+        if (stopPoints.size()>0) addressJson.setLength(addressJson.length()-1);
+        addressJson.append("]");
+
         return "{\n\"journeyId\": " + journeyId +
                 ",\n\"creatorId\": " +  creator.getUserId() +
+                ",\n\"stopPoints\" : " + addressJson.toString() +
                 ",\n\"time\": " + time +
                 ",\n\"length\": " + length + "\n}";
     }

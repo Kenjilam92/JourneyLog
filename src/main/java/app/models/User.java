@@ -109,7 +109,13 @@ public class User {
     public String toJsonDetails() {
         StringBuilder json = new StringBuilder();
         json.append("{");
-        json.append("\"profile\" : " + this.toString() +", ");
+        json.append("\n\"userId\": " + userId +
+                ",\n\"firstName\": " + "\"" + firstName + "\"" +
+                ",\n\"lastName\": " + "\"" + lastName + "\"" +
+                ",\n\"email\": " + "\"" + email + "\"" +
+                ",\n\"password\": " + "\"" + password + "\"" +
+                "\n"
+        );
 
         json.append("\"addressBook\" : [" );
         addressBook.stream().forEach( l -> json.append( l.toString() + "," ) );
