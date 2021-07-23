@@ -20,12 +20,17 @@ export class TestServicesComponent implements OnInit {
 
 
   locationFormSubmit( ...a:any ){
-    console.log(a.target);
+    console.log(a);
+    console.log (this.streetNumber);
     if (this.streetNumber > 0 && this.streetName !=='' && this.city !=='' && this.state !=='' && this.zipcode !=='' ){
       this.backend.addLocation( this.streetNumber, this.streetName, this.city, this.state, this.zipcode)
         .subscribe( x => console.log(x) , err => console.log (err), () => console.log('observe not complete') );
     }
+    else {
+      console.log("do not run backend function");
+    }
   }
+
 
   
 

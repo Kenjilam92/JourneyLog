@@ -1,0 +1,59 @@
+<p>journey-form works!</p>
+
+<div class="row">
+    <div class="col-6">
+        <h2>Start</h2>
+        <div class="d-flex justify-content-between">
+            <label for="streetNumber">Street Number: </label>
+            <input type="number" [(ngModel)]="streetNumberStart">
+        </div>
+        <div class="d-flex justify-content-between">
+            <label for="streetName">Street Name: </label>
+            <input type="text" [(ngModel)]="streetNameStart">
+        </div>
+        <div class="d-flex justify-content-between">
+            <label for="city">City: </label>
+        <input type="text" [(ngModel)]="cityStart">
+        </div>
+        <div class="d-flex justify-content-between">
+            <label for="state">State: </label>
+            <input type="text" [(ngModel)]="stateStart">
+        </div>
+        <div class="d-flex justify-content-between">
+            <label for="zipcode">zipcode: </label>
+            <input type="text" [(ngModel)]="zipcodeStart">
+        </div>
+        
+    </div>
+    <div class="col-6">
+        <h2>End</h2>
+        <div class="d-flex justify-content-between">
+            <label for="streetNumber">Street Number: </label>
+            <input type="number" [(ngModel)]="streetNumberEnd">
+        </div>
+        <div class="d-flex justify-content-between">
+            <label for="streetName">Street Name: </label>
+            <input type="text" [(ngModel)]="streetNameEnd">
+        </div>
+        <div class="d-flex justify-content-between">
+            <label for="city">City: </label>
+        <input type="text" [(ngModel)]="cityEnd">
+        </div>
+        <div class="d-flex justify-content-between">
+            <label for="state">State: </label>
+            <input type="text" [(ngModel)]="stateEnd">
+        </div>
+        <div class="d-flex justify-content-between">
+            <label for="zipcode">zipcode: </label>
+            <input type="text" [(ngModel)]="zipcodeEnd">
+        </div>
+    </div>
+    <div class="row">
+        <p>Time : {{ time }}</p>
+        <p>Length : {{ length }}</p>
+    </div>
+    <div class="d-flex justify-content-end ">
+        <button (click) = "estimateClick($event)" class="btn btn-primary m-1"> Estimate </button>
+        <button (click) = "saveJourneyClick($event)" class="btn btn-success m-1"> Save </button>
+    </div>
+</div>

@@ -114,7 +114,7 @@ public class User {
                 ",\n\"lastName\": " + "\"" + lastName + "\"" +
                 ",\n\"email\": " + "\"" + email + "\"" +
                 ",\n\"password\": " + "\"" + password + "\"" +
-                "\n"
+                ",\n"
         );
 
         json.append("\"addressBook\" : [" );
