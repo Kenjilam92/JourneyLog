@@ -77,7 +77,7 @@ public class Journey {
     public String toString() {
         StringBuffer addressJson = new StringBuffer();
         addressJson.append("[");
-        stopPoints.stream().forEach(a-> addressJson.append(a.toString()));
+        stopPoints.stream().forEach(a-> addressJson.append(a.toString() + ", "));
         if (stopPoints.size()>0) addressJson.setLength(addressJson.length()-1);
         addressJson.append("]");
 

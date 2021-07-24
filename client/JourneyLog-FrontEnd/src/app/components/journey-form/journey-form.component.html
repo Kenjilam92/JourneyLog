@@ -1,54 +1,93 @@
-<p>journey-form works!</p>
 
-<div class="row">
-    <div class="col-6">
+<div class="row bg-secondary text-white">
+    <div class="col-sm-6 col">
         <h2>Start</h2>
-        <div class="d-flex justify-content-between">
-            <label for="streetNumber">Street Number: </label>
-            <input type="number" [(ngModel)]="streetNumberStart">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="streetNumber">Street Number: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="number" [(ngModel)]="streetNumberStart">
+            </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <label for="streetName">Street Name: </label>
-            <input type="text" [(ngModel)]="streetNameStart">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="streetName">Street Name: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="streetNameStart">
+            </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <label for="city">City: </label>
-        <input type="text" [(ngModel)]="cityStart">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="city">City: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="cityStart">
+            </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <label for="state">State: </label>
-            <input type="text" [(ngModel)]="stateStart">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="state">State: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="stateStart">
+            </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <label for="zipcode">zipcode: </label>
-            <input type="text" [(ngModel)]="zipcodeStart">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="zipcode">zipcode: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="zipcodeStart">
+            </div>
         </div>
         
     </div>
-    <div class="col-6">
+    <div class="col-sm-6 col">
         <h2>End</h2>
-        <div class="d-flex justify-content-between">
-            <label for="streetNumber">Street Number: </label>
-            <input type="number" [(ngModel)]="streetNumberEnd">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="streetNumber">Street Number: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="number" [(ngModel)]="streetNumberEnd">
+            </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <label for="streetName">Street Name: </label>
-            <input type="text" [(ngModel)]="streetNameEnd">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="streetName">Street Name: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="streetNameEnd">
+            </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <label for="city">City: </label>
-        <input type="text" [(ngModel)]="cityEnd">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="city">City: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="cityEnd">
+            </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <label for="state">State: </label>
-            <input type="text" [(ngModel)]="stateEnd">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="state">State: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="stateEnd">
+            </div>
         </div>
-        <div class="d-flex justify-content-between">
-            <label for="zipcode">zipcode: </label>
-            <input type="text" [(ngModel)]="zipcodeEnd">
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="zipcode">zipcode: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="zipcodeEnd">
+            </div>
         </div>
     </div>
-    <div class="row">
+    <div class="d-flex justify-content-around">
         <p>Time : {{ time }}</p>
         <p>Length : {{ length }}</p>
     </div>

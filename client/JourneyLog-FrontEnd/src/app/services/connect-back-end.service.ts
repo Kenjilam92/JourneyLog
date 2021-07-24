@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
+import { Location } from '../models/location';
 import { Observable } from 'rxjs';
 
 
@@ -52,6 +53,7 @@ export class ConnectBackEndService {
       "length" : length,
       "stopPonts" : stopPoints
     };
+    console.log(JSON.stringify(json));
     return this.http.post ( `${this.domain}/create/journeys`,json);    
   }  
 }

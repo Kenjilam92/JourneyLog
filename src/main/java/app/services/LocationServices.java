@@ -72,7 +72,10 @@ public class LocationServices implements LocationServicesDAO {
         query.setParameter("city", x.getCity() );
         query.setParameter("state", x.getState() );
         query.setParameter("zipcode", x.getZipcode() );
-        lo = (Location) query.uniqueResult();
+        lo = (Location) query.list().stream().findFirst().orElse(null);
+        System.out.println("Unique");
+        System.out.println(lo);
+
         return lo;
     }
 
@@ -80,18 +83,19 @@ public class LocationServices implements LocationServicesDAO {
         if(checkExist(x) != null) {
             return false;
         }
-        try{
-            Session session = sessionFactory.openSession();
-            Transaction tx = session.beginTransaction();
-            session.save(x);
-            tx.commit();
-            session.close();
+        else {
+            try {
+                Session session = sessionFactory.openSession();
+                Transaction tx = session.beginTransaction();
+                session.save(x);
+                tx.commit();
+                session.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
         }
-        catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-        return true;
     }
 
     public boolean deleteLocation(Location x) {
