@@ -73,9 +73,6 @@ public class LocationServices implements LocationServicesDAO {
         query.setParameter("state", x.getState() );
         query.setParameter("zipcode", x.getZipcode() );
         lo = (Location) query.list().stream().findFirst().orElse(null);
-        System.out.println("Unique");
-        System.out.println(lo);
-
         return lo;
     }
 
