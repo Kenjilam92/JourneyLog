@@ -1,0 +1,98 @@
+
+<div class="row bg-secondary text-white">
+    <div class="col-sm-6 col">
+        <h2>Start</h2>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="streetNumber">Street Number: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="number" [(ngModel)]="streetNumberStart">
+            </div>
+        </div>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="streetName">Street Name: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="streetNameStart">
+            </div>
+        </div>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="city">City: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="cityStart">
+            </div>
+        </div>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="state">State: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="stateStart">
+            </div>
+        </div>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="zipcode">zipcode: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="zipcodeStart">
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-sm-6 col">
+        <h2>End</h2>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="streetNumber">Street Number: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="number" [(ngModel)]="streetNumberEnd">
+            </div>
+        </div>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="streetName">Street Name: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="streetNameEnd">
+            </div>
+        </div>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="city">City: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="cityEnd">
+            </div>
+        </div>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="state">State: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="stateEnd">
+            </div>
+        </div>
+        <div class="row g-2 align-items-center p-1 justify-content-between">
+            <div class="col-auto">
+                <label class="col-form-label" for="zipcode">zipcode: </label>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="text" [(ngModel)]="zipcodeEnd">
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-around">
+        <p>Time : {{ time }}</p>
+        <p>Length : {{ length }}</p>
+    </div>
+    <div class="d-flex justify-content-end ">
+        <button (click) = "estimateClick($event)" class="btn btn-primary m-1"> Estimate </button>
+        <button (click) = "saveJourneyClick($event)" class="btn btn-success m-1"> Save </button>
+    </div>
+</div>

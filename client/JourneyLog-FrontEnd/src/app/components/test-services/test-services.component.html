@@ -1,0 +1,24 @@
+<p>test-services works!</p>
+<!-- <form (submit) = "locationFormSubmit($event)" > -->
+    <div>
+        <label for="streetNumber">Street Number: </label>
+        <input type="number" [(ngModel)]="streetNumber">
+    </div>
+    <div>
+        <label for="streetName">Street Name: </label>
+        <input type="text" [(ngModel)]="streetName">
+    </div>
+    <div>
+        <label for="city">City: </label>
+        <input type="text" [(ngModel)]="city">
+    </div>
+    <div>
+        <label for="state">State: </label>
+        <input type="text" [(ngModel)]="state">
+    </div>
+    <div>
+        <label for="zipcode">zipcode: </label>
+        <input type="text" [(ngModel)]="zipcode">
+    </div>
+    <button (click)="locationFormSubmit($event)"> submit </button>
+<!-- </form> -->

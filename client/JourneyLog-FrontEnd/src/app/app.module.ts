@@ -1,18 +1,23 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HeaderComponentComponent } from './header-component/header-component.component';
-import { HeaderComponent } from './header/header.component';
+import { TestServicesComponent } from './components/test-services/test-services.component';
+import { JourneyFormComponent } from './components/journey-form/journey-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponentComponent,
-    HeaderComponent
+    TestServicesComponent,
+    JourneyFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

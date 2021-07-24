@@ -76,13 +76,12 @@ public class Location {
     // Action Needed: Missing one " mark for each value.
     // toJson
     public String toString() {
-        return "{\n\"Location ID\": " + locationId +
-                ",\n\"Street Number\": " + streetNumber +
-                ",\n\"Street Name\": " + "\"" + streetName + "\"" +
-                ",\n\"City\": " + "\"" + city + "\"" +
-                ",\n\"State\": " + "\"" + state + "\"" +
-                ",\n\"Zipcode\": " + "\"" + zipcode + "\"\n}";
-
+        return "{\n\"locationId\": " + locationId +
+                ",\n\"streetNumber\": " + streetNumber +
+                ",\n\"streetName\": " + "\"" + streetName + "\"" +
+                ",\n\"city\": " + "\"" + city + "\"" +
+                ",\n\"state\": " + "\"" + state + "\"" +
+                ",\n\"zipcode\": " + "\"" + zipcode + "\"\n}";
     }
 
 }

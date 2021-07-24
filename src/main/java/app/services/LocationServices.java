@@ -60,7 +60,7 @@ public class LocationServices implements LocationServicesDAO {
     public Location checkExist(Location x) {
         Location lo = null;
         Session session = sessionFactory.openSession();
-        String queryString = "from LOCATIONS " +
+        String queryString = "from Location " +
                              "where street_numbers=:streetNumber and" +
                              " street_name=:streetName and" +
                              " city=:city and" +
@@ -72,7 +72,7 @@ public class LocationServices implements LocationServicesDAO {
         query.setParameter("city", x.getCity() );
         query.setParameter("state", x.getState() );
         query.setParameter("zipcode", x.getZipcode() );
-        lo = (Location) query.uniqueResult();
+        lo = (Location) query.list().stream().findFirst().orElse(null);
         return lo;
     }
 
@@ -80,18 +80,19 @@ public class LocationServices implements LocationServicesDAO {
         if(checkExist(x) != null) {
             return false;
         }
-        try{
-            Session session = sessionFactory.openSession();
-            Transaction tx = session.beginTransaction();
-            session.save(x);
-            tx.commit();
-            session.close();
+        else {
+            try {
+                Session session = sessionFactory.openSession();
+                Transaction tx = session.beginTransaction();
+                session.save(x);
+                tx.commit();
+                session.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
         }
-        catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-        return true;
     }
 
     public boolean deleteLocation(Location x) {

@@ -19,21 +19,25 @@ public class Show {
 
         // Show All Users
         @GetMapping(path="users", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-        public ResponseEntity getAllUser() {
-
-//                System.out.println("All Users");
-
+        public String getAllUser() {
                 List<User> users = userServices.getAllUser();
-                return ResponseEntity.ok(users);
+                StringBuffer json = new StringBuffer();
+
+                json.append("[");
+                users.stream().forEach(u-> json.append( u.toJsonDetails() + ","));
+                if (users.size()>0) json.setLength(json.length()-1);
+                json.append("]");
+
+                return json.toString();
         }
 
         // Show User by Id
         @GetMapping(path="users/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-        public ResponseEntity getUserById(@PathVariable Integer id) {
+        public String getUserById(@PathVariable Integer id) {
 
                 User user = userServices.getUserById(id);
 
-                return ResponseEntity.ok(user);
+                return user.toJsonDetails();
         }
 
         // Show All Locations
@@ -57,19 +61,26 @@ public class Show {
 
         // Show All Journeys
         @GetMapping(path="journeys", produces = {MediaType.APPLICATION_JSON_VALUE})
-        public ResponseEntity getAllJourneys() {
+        public String getAllJourneys() {
 
 //                System.out.println("All Journeys");
+                StringBuilder json = new StringBuilder();
                 List<Journey> journeys = journeyServices.getAllJourneys();
-                return ResponseEntity.ok(journeys);
+                json.append("[");
+                journeys.stream().forEach(j->json.append(j.toString() + ","));
+                if(journeys.size() > 0 ) json.setLength(json.length()-1);
+                json.append("]");
+                return json.toString();
         }
 
         // Show Journey by Id
         @GetMapping(path="journeys/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-        public ResponseEntity getJourneyById(@PathVariable int x) {
+        public String getJourneyById(@PathVariable int x) {
 
 //                System.out.println(x);
                 Journey j = journeyServices.getJourneyById(x);
-                return ResponseEntity.ok(j);
+
+
+                return j.toString();
         }
 }
