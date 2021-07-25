@@ -1,16 +1,4 @@
 <div class="mat-elevation-z8 container">
-  <mat-card>
-    <div>Select Addresses:</div>
-    <ol>
-      <li *ngFor="let clickedRow of clickedRows">
-        {{ clickedRow.streetNumber }}
-        {{ clickedRow.streetName }} Street,
-        {{ clickedRow.city }},
-        {{ clickedRow.state }}
-        {{ clickedRow.zipcode }}
-      </li>
-    </ol>
-  </mat-card>
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 selected-row">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -60,4 +48,17 @@
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <hr>
+  <mat-card>
+    <div>Select Addresses:</div>
+    <ol>
+      <li *ngFor="let clickedRow of clickedRows">
+        {{ clickedRow.streetNumber }}
+        {{ clickedRow.streetName }} Street,
+        {{ clickedRow.city }},
+        {{ clickedRow.state }}
+        {{ clickedRow.zipcode }}
+      </li>
+    </ol>
+  </mat-card>
 </div>
