@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-header',
@@ -13,11 +14,10 @@ export class HeaderComponent implements OnInit {
   }
 
   @Input()
-  userData: any = {
+  userData: User = {
     "userId" : 0,
     "firstName" : "FirstName",
     "lastName" :  "LastName",
-    "email" : "email@website.com",
-    "address" : "XXXX StreetName"
+    "email" : "email@website.com"
   };
 }

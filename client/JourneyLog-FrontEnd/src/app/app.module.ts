@@ -6,11 +6,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TestServicesComponent } from './components/test-services/test-services.component';
 import { JourneyFormComponent } from './components/journey-form/journey-form.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestServicesComponent,
+    HeaderComponent,
     JourneyFormComponent
   ],
   imports: [
