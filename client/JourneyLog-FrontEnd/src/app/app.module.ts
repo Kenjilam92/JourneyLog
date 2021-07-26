@@ -8,6 +8,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 import { AppComponent } from './app.component';
 import { TestServicesComponent } from './components/test-services/test-services.component';
@@ -35,7 +37,8 @@ import { TableTabsComponent } from './components/table-tabs/table-tabs.component
     MatTabsModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
