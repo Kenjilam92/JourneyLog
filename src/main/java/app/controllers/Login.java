@@ -14,16 +14,16 @@ public class Login {
     private UserServices userServices = UserServices.getServices();
 
     @PostMapping(path="user", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity login (@RequestBody Map<String,String> loginData){
+    public String login (@RequestBody Map<String,String> loginData){
         String email = loginData.get("email");
         String password = loginData.get("password");
 
         User selected = userServices.getUserByEmailAndPassword(email,password);
 
         return selected != null ?
-                ResponseEntity.ok(selected)
+                selected.toJsonDetails()
                 :
-                new ResponseEntity<>("{ \"connected\" : true, \"status\" : \"false\" }", HttpStatus.OK);
+                "{ \"connected\" : true, \"status\" : \"false\" }";
     }
 
 }
