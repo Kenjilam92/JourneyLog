@@ -14,10 +14,5 @@ export class HeaderComponent implements OnInit {
   }
 
   @Input()
-  userData: User = {
-    "userId" : 0,
-    "firstName" : "FirstName",
-    "lastName" :  "LastName",
-    "email" : "email@website.com"
-  };
+  userData: User = new User ();
 }
