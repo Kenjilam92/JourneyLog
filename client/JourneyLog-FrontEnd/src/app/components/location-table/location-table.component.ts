@@ -1,7 +1,8 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {LocationToJourneyService} from '../../services/location-to-journey.service';
 
 /*
 Address table with pagination, sort and select
@@ -14,6 +15,10 @@ Address table with pagination, sort and select
 })
 
 export class LocationTableComponent {
+
+
+  constructor(private service: LocationToJourneyService) { }
+
   displayedColumns: string[] = [
     'locationId',
     'streetNumber',
@@ -22,6 +27,7 @@ export class LocationTableComponent {
     'state',
     'zipcode',
   ];
+
   dataSource = new MatTableDataSource<AddressElement>(DATA);
   clickedRows = new Set<AddressElement>();
 
@@ -31,6 +37,11 @@ export class LocationTableComponent {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  selected() {
+    this.service.add();
+    console.log(this.clickedRows);
   }
 }
 
@@ -43,7 +54,7 @@ export interface AddressElement {
   zipcode: string;
 }
 
-const DATA: AddressElement[] = [
+export const DATA: AddressElement[] = [
     {
       locationId: 1,
       streetNumber: 5,
