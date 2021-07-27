@@ -2,10 +2,10 @@
   <div class="tabs col-12">
     <mat-tab-group>
       <mat-tab label="My Address Book">
-        <app-location-table></app-location-table>
+        <app-location-table [addressBook] = "locationsList"></app-location-table>
       </mat-tab>
       <mat-tab label="My Journeys">
-        <app-journey-table></app-journey-table>
+        <app-journey-table [journeyLog] = "journeysList"></app-journey-table>
       </mat-tab>
     </mat-tab-group>
   </div>

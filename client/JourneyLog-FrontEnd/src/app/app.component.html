@@ -11,13 +11,14 @@
 
     <div class="row m-1">
       <div class="col-8 bg-danger p-1">
-        <app-table-tabs></app-table-tabs>
+        <app-table-tabs [journeysList] = "loginUserJourneyLog!" 
+                        [locationsList] = "loginUserAddressBook!">
+        </app-table-tabs>
       </div>
       <div class="col-4 bg-secondary p-1">
-        <app-journey-form></app-journey-form>
+        <app-journey-form [creatorId] = "loginUserId!"></app-journey-form>
       </div>
     </div>
-
   </div>
 
 

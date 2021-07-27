@@ -1,7 +1,8 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
 import { LocationTableComponent } from '../location-table/location-table.component';
 import { LocationToJourneyService } from '../../services/location-to-journey.service';
 import { Subscription } from 'rxjs';
+import { Journey } from 'src/app/models/journey';
 
 /*
 Journey list
@@ -16,5 +17,6 @@ Journey list
 export class JourneyTableComponent {
   panelOpenState = false;
   constructor() { }
-
+  @Input()
+  journeyLog?: Journey[] = [];
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ConnectBackEndService } from 'src/app/services/connect-back-end.service';
 import { GoogleAPIService } from 'src/app/services/google-api.service';
@@ -30,7 +30,8 @@ export class JourneyFormComponent implements OnInit {
   length : number = 0;
   time : number = 0;
 
-  creatorId : number = 1;
+  @Input() creatorId : number = 0;
+
   start : Location = new Location();
   end : Location = new Location(); 
 
