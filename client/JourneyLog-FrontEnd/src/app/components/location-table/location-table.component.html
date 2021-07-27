@@ -1,0 +1,68 @@
+<div class="mat-elevation-z8 container">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 selected-row">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Location ID Column -->
+    <ng-container matColumnDef="locationId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Location Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.locationId }}</td>
+    </ng-container>
+
+    <!-- Street Number Column -->
+    <ng-container matColumnDef="streetNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Street No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.streetNumber }}</td>
+    </ng-container>
+
+    <!-- Street Name Column -->
+    <ng-container matColumnDef="streetName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Street Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.streetName }}</td>
+    </ng-container>
+
+    <!-- City Column -->
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+      <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+    </ng-container>
+
+    <!-- State Column -->
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+      <td mat-cell *matCellDef="let element">{{ element.state }}</td>
+    </ng-container>
+
+    <!-- Zipcode Column -->
+    <ng-container matColumnDef="zipcode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Zipcode</th>
+      <td mat-cell *matCellDef="let element">{{ element.zipcode }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+        (click)="clickedRows.add(row)"
+        [class.selected-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <hr>
+  <mat-card>
+    <div>Select Addresses:</div>
+    <ol>
+      <li *ngFor="let clickedRow of clickedRows">
+        {{ clickedRow.streetNumber }}
+        {{ clickedRow.streetName }} Street,
+        {{ clickedRow.city }},
+        {{ clickedRow.state }}
+        {{ clickedRow.zipcode }}
+      </li>
+    </ol>
+
+    <button type="button"
+            class="btn btn-danger"
+            (click)="selected()">Add to Journey</button>
+  </mat-card>
+</div>
