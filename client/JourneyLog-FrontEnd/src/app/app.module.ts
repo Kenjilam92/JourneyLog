@@ -17,6 +17,8 @@ import { JourneyFormComponent } from './components/journey-form/journey-form.com
 import { LocationTableComponent } from './components/location-table/location-table.component';
 import { JourneyTableComponent } from './components/journey-table/journey-table.component';
 import { TableTabsComponent } from './components/table-tabs/table-tabs.component';
+import { MetterToMilesPipe } from './pipes/metter-to-miles.pipe';
+import { SecondsToTimeStringPipe } from './pipes/seconds-to-time-string.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { TableTabsComponent } from './components/table-tabs/table-tabs.component
     LocationTableComponent,
     JourneyTableComponent,
     TableTabsComponent
-
+    MetterToMilesPipe,
+    SecondsToTimeStringPipe
   ],
   imports: [
     BrowserModule,
