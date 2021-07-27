@@ -27,7 +27,7 @@ import { SecondsToTimeStringPipe } from './pipes/seconds-to-time-string.pipe';
     JourneyFormComponent,
     LocationTableComponent,
     JourneyTableComponent,
-    TableTabsComponent
+    TableTabsComponent,
     MetterToMilesPipe,
     SecondsToTimeStringPipe
   ],
