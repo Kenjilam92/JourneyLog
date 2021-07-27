@@ -30,8 +30,8 @@ public class Journey {
         super();
         this.creator = creator;
         this.time = time;
-        this. length = length;
-        this. stopPoints = stopPoints;
+        this.length = length;
+        this.stopPoints = stopPoints;
     }
 
     public Journey(){

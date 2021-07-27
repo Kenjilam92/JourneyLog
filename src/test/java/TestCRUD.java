@@ -36,109 +36,96 @@ public class TestCRUD {
 
     }
 
-//	@BeforeAll
-//	void greeting() {
-//		System.out.println("Begin testing! ");
-//	}
-//
-//	@BeforeEach
-//	void border() {
-//		System.out.println("*******************");
-//	}
-
     @Test
     @Order(1)
-    void createUser() {
+   public void createUser() {
         User u = new User("john", "david", "john@gmail.com", "1234");
-        assertEquals(uServ.createUser(u), true);
+        assertFalse(uServ.createUser(u));
     }
 
     @Test
     @Order(2)
-    void uniqueEmail() {
+   public void uniqueEmail() {
         User u = new User("john", "david", "john@gmail.com", "1234");
-        assertEquals(uServ.createUser(u), false);
+        assertTrue(uServ.createUser(u));
     }
 
     @Test
     @Order(3)
-    void updateUser() {
+    public void updateUser() {
         User select = uServ.getUserByEmailAndPassword("john@gmail.com", "1234");
 
         select.setFirstName("John");
         select.setLastName("Doe");
 //		System.out.println(select);
-        assertEquals(uServ.updateUser(select), true);
+        assertTrue(uServ.updateUser(select));
     }
 
     @Test
     @Order(4)
-    void createLocation1() {
+    public void createLocation1() {
         Location u = new Location(148, "Stable Rd", "Gilmer", "TX", "75645");
-        assertEquals(locServ.createLocation(u), true);
-    }
-
-    @Test
-    @Order(4)
-    void createLocation2() {
-        Location u = new Location(8525, "Garland Rd", "Dallas", "TX", "75218");
-        assertEquals(locServ.createLocation(u), true);
+        assertTrue(locServ.createLocation(u));
     }
 
     @Test
     @Order(5)
-    void updateLocation1() {
-        Location select = locServ.getLocationById(1);
-
-        select.setStreetNumber(149);
-
-//		System.out.println(select);
-        assertEquals(locServ.updateLocation(select), true);
+    public void createLocation2() {
+        Location u = new Location(8525, "Garland Rd", "Dallas", "TX", "75218");
+        assertTrue(locServ.createLocation(u));
     }
 
     @Test
     @Order(6)
-    void createJourney() {
-        Journey u = new Journey(user1, 45, 56, Location);
-        assertEquals(jourServ.createJourney(u), true);
+    public void updateLocation1() {
+        Location select = locServ.getLocationById(1);
+
+        select.setStreetNumber(301);
+        assertTrue(locServ.updateLocation(select));
     }
 
     @Test
     @Order(7)
-    void updateJourney() {
-        Journey select = jourServ.getJourneyById(1);
-
-        select.setStopPoints(List<Location>);
-//		System.out.println(select);
-        assertEquals(jourServ.updateJourney(select), true);
+    public void createJourney() {
+        Journey u = new Journey(user1, 45, 56, listLoc1);
+        assertTrue(jourServ.createJourney(u));
     }
 
     @Test
     @Order(8)
-    void deleteJourney() {
-        Journey u = new Journey(user1, 45, 56, Location);
-        assertEquals(jourServ.deleteJourney(u), true);
+    public void updateJourney() {
+        Journey select = jourServ.getJourneyById(1);
+
+        select.setStopPoints(listLoc2);
+        assertTrue(jourServ.updateJourney(select));
     }
 
     @Test
     @Order(9)
-    void deleteLocation1() {
-        Location u = new Location(149, "Stable Rd", "Gilmer", "TX", "75645");
-        assertEquals(locServ.deleteLocation(u), true);
+    public void deleteJourney() {
+       Journey u = new Journey(user1, 45, 56, listLoc1);
+        assertEquals(jourServ.deleteJourney(u), true);
     }
 
     @Test
     @Order(10)
-    void deleteLocation2() {
-        Location u = new Location(8525, "Garland Rd", "Dallas", "TX", "75218");
-        assertEquals(locServ.deleteLocation(u), true);
+    public void deleteLocation1() {
+        Location u = new Location(148, "Stable Rd", "Gilmer", "TX", "75645");
+        assertTrue(locServ.deleteLocation(locServ.checkExist(u)));
     }
 
     @Test
     @Order(11)
-    void deleteUser() {
-        User u = new User("John", "Doe", "john@gmail.com", "1234");
-        assertEquals(uServ.deleteUser(u), true);
+    public void deleteLocation2() {
+        Location u = new Location(8525, "Garland Rd", "Dallas", "TX", "75218");
+        assertTrue(locServ.deleteLocation(locServ.checkExist(u)));
+    }
+
+    @Test
+    @Order(12)
+    public void deleteUser() {
+        User u = uServ.getUserByEmailAndPassword("john@gmail.com", "1234");
+        assertTrue(uServ.deleteUser(u));
     }
 
 }
