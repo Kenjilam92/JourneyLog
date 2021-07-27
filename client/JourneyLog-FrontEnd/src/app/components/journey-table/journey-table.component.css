@@ -2,7 +2,19 @@
   width: 100%;
 }
 
-.mat-form-field + .mat-form-field {
-  margin-left: 8px;
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
 }
+
+.mat-row:hover .mat-cell {
+  background-color: lightcoral;
+  border-color: currentColor;
+}
+
+.selected-row-is-clicked {
+  font-weight: bold;
+}
+
 
