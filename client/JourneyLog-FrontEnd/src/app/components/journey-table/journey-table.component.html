@@ -1,14 +1,58 @@
-<mat-accordion>
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        My Awesome Trip Post Pandemic ^_^
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <ol>
-      <li>5 Maryland Street, Saginaw, Michigan 11902</li>
-      <li>192 Montana Street, Berkeley, California 16913</li>
-    </ol>
-  </mat-expansion-panel>
-</mat-accordion>
+<div class="mat-elevation-z8 container">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 selected-row">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Journey ID Column -->
+    <ng-container matColumnDef="journeyId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Journey Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.journeyId }}</td>
+    </ng-container>
+
+    <!-- Stop Points Column -->
+    <ng-container matColumnDef="stopPoints">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Stop Points</th>
+      <td mat-cell *matCellDef="let element">
+        <ul>
+          <li ng-repeat="lo in element.stopPoints"> {{ lo.streetNumber }} {{lo.streetName}}, {{ lo.city }}, {{lo.state}}, {{lo.zipcode}} </li>
+        </ul>
+      </td>
+    </ng-container>
+
+    <!-- Time Column -->
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
+      <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+    </ng-container>
+
+    <!-- Length Column -->
+    <ng-container matColumnDef="length">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Length</th>
+      <td mat-cell *matCellDef="let element">{{ element.length }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+        (click)="clickedRows.add(row)"
+        [class.selected-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <hr>
+  <mat-card>
+    <div>Select Journeys</div>
+    <ul>
+      <li *ngFor="let clickedRow of clickedRows">
+        Stop Points: {{ clickedRow.stopPoints }},
+        Time: {{ clickedRow.time }},
+        Distance: {{ clickedRow.length }}
+      </li>
+    </ul>
+
+    <button type="button"
+            class="btn btn-danger">Add to Journey Log</button>
+  </mat-card>
+</div>
+
