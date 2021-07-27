@@ -2,6 +2,7 @@ package app.services;
 
 import app.DAO.LocationServicesDAO;
 import app.models.*;
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,12 +13,14 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 
 public class LocationServices implements LocationServicesDAO {
+    private static final Logger LOGGER = Logger.getLogger(LocationServices.class.getName());
 
     private SessionFactory sessionFactory;
     private static LocationServices instance = new LocationServices();
 
     private LocationServices(){
         super();
+        LOGGER.debug("Initializing Location Services");
         final Configuration config = new Configuration().configure();
         final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(config.getProperties());
         sessionFactory = config.buildSessionFactory(builder.build());
@@ -37,7 +40,10 @@ public class LocationServices implements LocationServicesDAO {
             tx.commit();
             session.close();
         }catch (Exception e){
-            e.printStackTrace();
+            LOGGER.debug("Exception in getAllLocations:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
         }
         return locations;
     }
@@ -52,27 +58,38 @@ public class LocationServices implements LocationServicesDAO {
             session.close();
         }
         catch (Exception e){
-            e.printStackTrace();
+            LOGGER.debug("Exception in getLocationById:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
         }
         return location;
     }
 
     public Location checkExist(Location x) {
         Location lo = null;
-        Session session = sessionFactory.openSession();
-        String queryString = "from Location " +
-                             "where street_numbers=:streetNumber and" +
-                             " street_name=:streetName and" +
-                             " city=:city and" +
-                             " state=:state and" +
-                             " zipcode=:zipcode";
-        Query query = session.createQuery( queryString );
-        query.setParameter("streetNumber", x.getStreetNumber() );
-        query.setParameter("streetName", x.getStreetName() );
-        query.setParameter("city", x.getCity() );
-        query.setParameter("state", x.getState() );
-        query.setParameter("zipcode", x.getZipcode() );
-        lo = (Location) query.list().stream().findFirst().orElse(null);
+        try {
+            Session session = sessionFactory.openSession();
+            String queryString = "from Location " +
+                    "where street_numbers=:streetNumber and" +
+                    " street_name=:streetName and" +
+                    " city=:city and" +
+                    " state=:state and" +
+                    " zipcode=:zipcode";
+            Query query = session.createQuery(queryString);
+            query.setParameter("streetNumber", x.getStreetNumber());
+            query.setParameter("streetName", x.getStreetName());
+            query.setParameter("city", x.getCity());
+            query.setParameter("state", x.getState());
+            query.setParameter("zipcode", x.getZipcode());
+            lo = (Location) query.list().stream().findFirst().orElse(null);
+        }
+        catch (Exception e){
+            LOGGER.debug("Exception in checkExist:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
+        }
         return lo;
     }
 
@@ -88,7 +105,10 @@ public class LocationServices implements LocationServicesDAO {
                 tx.commit();
                 session.close();
             } catch (Exception e) {
-                e.printStackTrace();
+                LOGGER.debug("Exception in createLocation:");
+                StackTraceElement[] trace = e.getStackTrace();
+                for(int i = 0; i < trace.length; i++)
+                    LOGGER.debug(trace[i]);
                 return false;
             }
             return true;
@@ -104,7 +124,10 @@ public class LocationServices implements LocationServicesDAO {
             session.close();
         }
         catch (Exception e){
-            e.printStackTrace();
+            LOGGER.debug("Exception in deleteLocation:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
             return false;
         }
         return true;
@@ -119,7 +142,10 @@ public class LocationServices implements LocationServicesDAO {
             session.close();
         }
         catch (Exception e){
-            e.printStackTrace();
+            LOGGER.debug("Exception in updateLocation:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
             return false;
         }
         return true;

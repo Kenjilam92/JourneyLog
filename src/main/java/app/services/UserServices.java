@@ -1,7 +1,7 @@
 package app.services;
 import app.DAO.*;
 import app.models.*;
-
+import org.apache.log4j.Logger;
 import org.hibernate.*;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -9,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 
 public class UserServices implements UserServicesDAO {
+    private static final Logger LOGGER = Logger.getLogger(UserServices.class.getName());
 
     private SessionFactory sessionFactory;
     private static UserServices instance = new UserServices();
@@ -16,6 +17,7 @@ public class UserServices implements UserServicesDAO {
 
     private UserServices(){
         super();
+        LOGGER.debug("Initializing User Services");
         final Configuration config = new Configuration().configure();
         final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(config.getProperties());
         sessionFactory = config.buildSessionFactory(builder.build());
@@ -35,7 +37,10 @@ public class UserServices implements UserServicesDAO {
             tx.commit();
             session.close();
         }catch (Exception e){
-            e.printStackTrace();
+            LOGGER.debug("Exception in getAllUser:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
         }
         return users;
     }
@@ -50,19 +55,32 @@ public class UserServices implements UserServicesDAO {
             session.close();
         }
         catch (Exception e){
-            e.printStackTrace();
+            LOGGER.debug("Exception in getUserById:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
         }
         return user;
     }
 
     public User getUserByEmailAndPassword(String email, String password) {
-        Session session = sessionFactory.openSession();
-        Query query = session.createQuery("FROM User WHERE EMAIL= :em and PASSWORD= :pw");
-        query.setParameter("em", email);
-        query.setParameter("pw",password);
-        List result = query.list();
-        session.close();
-        return result.size() == 0 ? null : (User) result.stream().findFirst().orElse(null);
+        User user = null;
+        try {
+            Session session = sessionFactory.openSession();
+            Query query = session.createQuery("FROM User WHERE EMAIL= :em and PASSWORD= :pw");
+            query.setParameter("em", email);
+            query.setParameter("pw", password);
+            List result = query.list();
+            session.close();
+            user = result.size() == 0 ? null : (User) result.stream().findFirst().orElse(null);
+        }
+        catch (Exception e){
+            LOGGER.debug("Exception in getUserByEmailAndPassword:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
+        }
+        return user;
     }
 
     public boolean createUser(User x) {
@@ -77,7 +95,10 @@ public class UserServices implements UserServicesDAO {
             session.close();
         }
         catch (Exception e){
-            e.printStackTrace();
+            LOGGER.debug("Exception in createUser:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
             return false;
         }
         return true;
@@ -96,7 +117,10 @@ public class UserServices implements UserServicesDAO {
             session.close();
         }
         catch (Exception e){
-            e.printStackTrace();
+            LOGGER.debug("Exception in deleteUser:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
             return false;
         }
         return true;
@@ -111,7 +135,10 @@ public class UserServices implements UserServicesDAO {
             session.close();
         }
         catch (Exception e){
-            e.printStackTrace();
+            LOGGER.debug("Exception in updateUser:");
+            StackTraceElement[] trace = e.getStackTrace();
+            for(int i = 0; i < trace.length; i++)
+                LOGGER.debug(trace[i]);
             return false;
         }
         return true;
