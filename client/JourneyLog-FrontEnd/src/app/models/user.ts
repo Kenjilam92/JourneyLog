@@ -1,4 +1,5 @@
 import { Journey } from "./journey";
+import { Location } from "./location";
 
 export class User {
     constructor(

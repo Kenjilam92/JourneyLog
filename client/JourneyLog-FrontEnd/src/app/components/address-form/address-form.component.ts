@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-address-form',
@@ -11,7 +12,10 @@ export class AddressFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  @Input()
-  userId? : number = 0
-    
+  @Input()  creatorId? : number = 0
+  
+  
+  onSubmit( form: NgForm ) {
+    console.log(JSON.stringify(form.value));
+  }
 }

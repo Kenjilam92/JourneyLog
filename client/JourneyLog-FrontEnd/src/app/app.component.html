@@ -1,24 +1,15 @@
 <div class="container w-100">
   <!-- <app-test-services></app-test-services> -->
-  <div class="page w-100 bg-success m-1">
-    ALbert component
+  <div class="page w-100 text-dark m-1 d-flex flex-column justify-content-center">
+    <app-home (loginUser) = "newUser($event)" ></app-home>
   </div>
 
-  <div class="page bg-primary col p-1">
-    <div class=" header row bg-warning m-2">
-      <app-header [userData]="loginUser!"></app-header>
-    </div>
-
-    <div class="row m-1">
-      <div class="col-8 bg-danger p-1">
-        <app-table-tabs [journeysList] = "loginUserJourneyLog!" 
-                        [locationsList] = "loginUserAddressBook!">
-        </app-table-tabs>
-      </div>
-      <div class="col-4 bg-secondary p-1">
-        <app-journey-form [creatorId] = "loginUserId!"></app-journey-form>
-      </div>
-    </div>
+  <div class="page col p-1">
+    <app-user-page [loginUser] = "loginUser"
+                   [userId] = "userId"
+                   [addressBook] = "addressBook"
+                   [journeyLog] = "journeyLog"
+    ></app-user-page>
   </div>
 
 

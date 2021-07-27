@@ -16,6 +16,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { AppComponent } from './app.component';
 import { TestServicesComponent } from './components/test-services/test-services.component';
 import { JourneyFormComponent } from './components/journey-form/journey-form.component';
+import { AddressFormComponent } from './components/address-form/address-form.component';
 
 import { HeaderComponent } from './components/header/header.component';
 import { MetterToMilesPipe } from './pipes/metter-to-miles.pipe';
@@ -24,6 +25,10 @@ import { SecondsToTimeStringPipe } from './pipes/seconds-to-time-string.pipe';
 import { LocationTableComponent } from './components/location-table/location-table.component';
 import { JourneyTableComponent } from './components/journey-table/journey-table.component';
 import { TableTabsComponent } from './components/table-tabs/table-tabs.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
 
 
 
@@ -33,12 +38,17 @@ import { TableTabsComponent } from './components/table-tabs/table-tabs.component
     AppComponent,
     TestServicesComponent,
     JourneyFormComponent,
+    AddressFormComponent,
     MetterToMilesPipe,
     SecondsToTimeStringPipe,
     HeaderComponent,
     LocationTableComponent,
     JourneyTableComponent,
-    TableTabsComponent
+    TableTabsComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

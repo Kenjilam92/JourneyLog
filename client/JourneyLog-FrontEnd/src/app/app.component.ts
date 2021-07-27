@@ -14,11 +14,18 @@ export class AppComponent {
 
   title = 'JourneyLog'
 
-  loginUserId? : number
+  userId? : number
 
-  loginUserAddressBook? : Location[] = []
-  
-  loginUserJourneyLog? : Journey[] = []
 
-  loginUser?: User = new User (1, "Samuel", "Sells", "SS@gmail.com", "12345", [], []);
+  loginUser?: User = new User();
+  addressBook? : Location[] = [];
+  journeyLog? : Journey[] = [];
+
+  newUser( user : User){
+    console.log(user);
+    this.loginUser = user;
+    this.addressBook = user.addressBook;
+    this.journeyLog = user.journeyLog;
+    this.userId = user.userId;
+  }
 }

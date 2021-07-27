@@ -19,7 +19,7 @@ export class ConnectBackEndService {
     "email" : email,
     "password" : password
   }
-
+  console.log(JSON.stringify(json));
     return this.http.post<User>(`${this.domain}/login/user`,json);
   }
 

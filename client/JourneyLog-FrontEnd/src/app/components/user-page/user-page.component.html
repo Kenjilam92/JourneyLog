@@ -1,0 +1,15 @@
+<div class=" header row text-primary m-2">
+    <app-header [userData]="loginUser!"></app-header>
+  </div>
+
+  <div class="row m-1 text-dark">
+    <div class="col-8 p-1">
+      <!-- <app-table-tabs [journeysList] = "journeyLog!" 
+                      [locationsList] = "addressBook!">
+      </app-table-tabs> -->
+    </div>
+    <div class="col-4 p-1">
+      <app-address-form [creatorId] = "userId!"></app-address-form>
+      <app-journey-form [creatorId] = "userId!"></app-journey-form>
+    </div>
+  </div>
