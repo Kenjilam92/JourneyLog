@@ -35,6 +35,7 @@ public class UserServices implements UserServicesDAO {
             tx.commit();
             session.close();
         }catch (Exception e){
+
             e.printStackTrace();
         }
         return users;
@@ -56,12 +57,18 @@ public class UserServices implements UserServicesDAO {
     }
 
     public User getUserByEmailAndPassword(String email, String password) {
-        Session session = sessionFactory.openSession();
-        Query query = session.createQuery("FROM User WHERE EMAIL= :em and PASSWORD= :pw");
-        query.setParameter("em", email);
-        query.setParameter("pw",password);
-        List result = query.list();
-        session.close();
+        List result = null;
+        try {
+            Session session = sessionFactory.openSession();
+            Query query = session.createQuery("FROM User WHERE EMAIL= :em and PASSWORD= :pw");
+            query.setParameter("em", email);
+            query.setParameter("pw", password);
+            result = query.list();
+            session.close();
+        }
+        catch ( Exception e){
+            e.printStackTrace();
+        }
         return result.size() == 0 ? null : (User) result.stream().findFirst().orElse(null);
     }
 

@@ -10,9 +10,9 @@ export class SecondsToTimeStringPipe implements PipeTransform {
     const hour = Math.floor((value%86400)/3600);
     const minute = Math.floor( ((value%86400)%3600)/60 );
 
-    const stringDay: string = `${day} ${day>1? "days" : "day"}`;
-    const stringHour: string = `${hour} ${hour>1? "hours" : "hour"}`;
-    const stringMinute: string = `${minute} ${minute>1? "minutes" : "minute"}`;
+    const stringDay: string = day===0? "" : `${day} ${day>1? "days" : "day"}`;
+    const stringHour: string = hour === 0? "" : `${hour} ${hour>1? "hours" : "hour"}`;
+    const stringMinute: string = minute === 0? "" : `${minute} ${minute>1? "minutes" : "minute"}`;
     
     return `${stringDay} ${stringHour} ${stringMinute}`;
   }

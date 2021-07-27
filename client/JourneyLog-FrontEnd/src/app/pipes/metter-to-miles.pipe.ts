@@ -7,9 +7,9 @@ export class MetterToMilesPipe implements PipeTransform {
 
   transform(value: number, ...args: unknown[]): string {
     
-    const miles: number = value/1609.34
+    const miles: number = Math.round(value/1609.34);
     
-    return `${miles} ${miles>1 && miles < -1 ? "miles" : "mile"}` ;
+    return miles===0? "" : `${miles} ${ miles > 1 || miles < -1 ? "miles" : "mile"}` ;
   }
 
 }

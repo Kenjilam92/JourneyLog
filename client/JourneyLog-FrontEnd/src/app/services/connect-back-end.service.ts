@@ -51,7 +51,7 @@ export class ConnectBackEndService {
       "creatorId" : creatorId,
       "time" : time,
       "length" : length,
-      "stopPonts" : stopPoints
+      "stopPoints" : stopPoints
     };
     console.log(JSON.stringify(json));
     return this.http.post ( `${this.domain}/create/journeys`,json);    
